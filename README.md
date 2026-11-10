@@ -75,6 +75,7 @@ documents how the Parquet files were exported from the source database with
 | `expected/` | Saved aggregate results and figures used as the comparison target |
 | `evidence/comparison/` | A small capability comparison with ecosyste.ms |
 | `release/` | Export manifest, recorded environment and rebuild notes |
+| `collector/` | The collector that produced the source database, with its origin note |
 
 ## Limits
 

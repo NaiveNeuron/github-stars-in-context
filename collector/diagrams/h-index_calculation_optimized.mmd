@@ -1,0 +1,26 @@
+flowchart LR
+    %% Terminal nodes
+    Start([Start]):::terminal
+    End([Process Complete]):::terminal
+
+    %% Process nodes
+    GetUser["Select Next User\nFetch Public Repositories\nExtract Star Counts"]:::process
+    SortRepos["Sort by Stars (Descending)\nCalculate h-index:\nh = max(i) where stars(i) ≥ i"]:::process
+    StoreResult["Update User Record\nwith h-index"]:::process
+
+    %% Decision node
+    CheckLoop{"More Users?"}:::decision
+
+    %% Connections
+    Start --> GetUser
+    GetUser --> SortRepos
+    SortRepos --> StoreResult
+    StoreResult --> CheckLoop
+
+    CheckLoop -- Yes --> GetUser
+    CheckLoop -- No --> End
+
+    %% Styling
+    classDef terminal fill:#f8f9fa,stroke:#495057,stroke-width:2px,color:#212529;
+    classDef process fill:#e7f1ff,stroke:#0d6efd,stroke-width:2px,color:#0a3d91,font-size:12px;
+    classDef decision fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#664d03,font-size:12px;

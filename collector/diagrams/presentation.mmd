@@ -1,0 +1,22 @@
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#3b82f6',
+  'primaryTextColor': '#fff',
+  'primaryBorderColor': '#2563eb',
+  'lineColor': '#64748b',
+  'fontSize': '13px',
+  'nodeBorderRadius': '6px'
+}}}%%
+
+graph LR
+    P["The Problem<br/><small>No standard impact metric on GitHub</small>"]:::step
+    H["What is h-index?<br/><small>Academic metric adapted for code</small>"]:::step
+    D["Data Collection<br/><small>3.5M profiles via GitHub APIs</small>"]:::step
+    M["Model Training<br/><small>Random Forest</small>"]:::step
+    T["GitHub Top Contributors<br/>"]:::step
+    S["Social Networks<br/><small>Where developers share their work</small>"]:::step
+
+    P --> H --> D
+    M --> T --> S
+
+    classDef step fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e293b
+    classDef highlight fill:#fef3c7,stroke:#d97706,stroke-width:3px,color:#78350f,font-weight:bold

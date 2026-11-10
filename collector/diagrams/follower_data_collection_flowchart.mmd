@@ -1,0 +1,26 @@
+flowchart LR
+    A([Start]) --> B[Define Bands & Date]
+    B --> C[Select Slice]
+    C --> D[Run Query]
+    D --> E{Count > 1000?}
+
+    E -- Yes --> F[Split/Save]
+    E -- No --> G[Fetch All]
+
+    F --> H[Save to DB]
+    G --> H
+
+    H --> I{More Slices?}
+    I -- Yes --> C
+    I -- No --> J{Next Band?}
+
+    J -- Yes --> C
+    J -- No --> K([Complete])
+
+    classDef terminal fill:#f8f9fa,stroke:#495057,stroke-width:2px,color:#212529;
+    classDef process fill:#e7f1ff,stroke:#0d6efd,stroke-width:2px,color:#0a3d91;
+    classDef decision fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#664d03;
+
+    class A,K terminal;
+    class B,C,D,F,G,H process;
+    class E,I,J decision;

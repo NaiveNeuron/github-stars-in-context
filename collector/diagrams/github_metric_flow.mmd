@@ -1,0 +1,10 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '14px'}}}%%
+flowchart LR
+    G1[Repositories] --> G2[Stars]
+    G2 --> G3["Follower Count ✗"]
+    G3 --> G4["No Standard Metric ?"]
+
+    classDef github fill:#f3e5f5,stroke:#6f42c1,stroke-width:2px;
+    classDef warning fill:#ffebee,stroke:#c62828,stroke-width:2px,stroke-dasharray: 4 4;
+    class G1,G2,G3 github;
+    class G4 warning;

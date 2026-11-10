@@ -1,0 +1,22 @@
+flowchart LR
+    %% Main Flow
+    Input[User Batch] --> Parallel[5 Parallel Threads]
+    Parallel --> API{GraphQL API}
+
+    %% Error Handling Loop (Compact)
+    API -- "403 Error" --> Rotate[Token Manager<br/>Switch Key]
+    Rotate --> API
+
+    %% Success Path
+    API -- "Success" --> Storage[SQLite DB]
+
+    %% Iteration Loop
+    Storage --> Check{More Batches?}
+    Check -- "Yes" --> Parallel
+    Check -- "No" --> End[Completed 3.5M Users]
+
+    %% Styling: Professional Blue
+    classDef default fill:#ffffff,stroke:#333,stroke-width:1px;
+    classDef action fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+
+    class Parallel,API,Rotate,Process,Storage action;
