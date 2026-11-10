@@ -1,0 +1,38 @@
+{
+  "provenance": {
+    "ended_at_utc": "2026-11-10T21:05:41.997643+00:00",
+    "endpoint": "GET https://api.github.com/user/{numeric_id}",
+    "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+    "saved": "aggregate counts only",
+    "seed": 20261110,
+    "started_at_utc": "2026-11-10T21:04:59.172268+00:00"
+  },
+  "strata": {
+    "profile_available": {
+      "http_200": 299,
+      "http_404": 1,
+      "other_status": {},
+      "population": 2520399,
+      "resolving_with_at_least_one_follower_today": 298,
+      "sampled": 300,
+      "share_not_resolving": 0.0033333333333333335,
+      "wilson_95": [
+        0.0005886577218511581,
+        0.018636693694531237
+      ]
+    },
+    "profile_masked_complete": {
+      "http_200": 298,
+      "http_404": 2,
+      "other_status": {},
+      "population": 1095080,
+      "resolving_with_at_least_one_follower_today": 296,
+      "sampled": 300,
+      "share_not_resolving": 0.006666666666666667,
+      "wilson_95": [
+        0.0018301483579117855,
+        0.023977583250306973
+      ]
+    }
+  }
+}

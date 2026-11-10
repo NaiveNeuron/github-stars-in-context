@@ -1,8 +1,9 @@
 # GitHub Stars in Context
 
 Processing code and reuse examples for **GitHub Stars in Context**, a dataset
-linking 3,671,497 GitHub user accounts to the 53,990,808 public, non-fork
-repositories they own, with star counts.
+linking 3,671,497 GitHub user accounts to 53,990,808 rows of public, non-fork
+repositories they own, with star counts. A row is one repository under one
+account. `PROVENANCE.md` documents how the data were collected and checked.
 
 - **Data:** <https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context>
   (three Parquet tables, 1.6 GB, CC BY-NC 4.0)
@@ -45,13 +46,14 @@ Max it takes about 20 seconds and 1.5 GB of memory.
 
 ## What the examples compute
 
-All examples use the 3,615,479 accounts whose repository retrieval completed,
-with 53,987,867 repository rows and 239,997,596 stars.
+The first four recipes use the 3,615,479 accounts whose repository retrieval
+completed, with 53,987,867 repository rows and 239,997,596 stars. The GH
+Archive join uses every repository row.
 
 | Recipe | Question | Headline result |
 | --- | --- | --- |
 | `01_thresholds.sql` | What does a minimum-star filter keep? | A 10-star filter keeps 2.89% of repository rows and 90.64% of stars, and drops 88.51% of the rows of the owners it keeps |
-| `02_portfolios.sql` | How concentrated are an account's stars? | Among accounts with at least 10,000 stars, the top repository holds a median 71.7% of them |
+| `02_portfolios.sql` | How concentrated are an account's stars? | Among accounts with at least two repositories and at least 10,000 stars, the top repository holds a median 71.7% of them |
 | `02b_rank_overlap.sql` | Do total stars and the h-index select the same accounts? | The top-1,000 sets (with ties: 1,125 and 1,000 accounts) share 265 |
 | `03_owner_clustering.sql` | How often do selected repositories share an owner? | At 100 stars, 60.07% of selected rows belong to owners with more than one selected repository |
 | `04_gharchive_join.sql` | Do the repository IDs join to GH Archive? | Of 63,567 repositories with events in one hour, 17,382 are in the dataset |
