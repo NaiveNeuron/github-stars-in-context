@@ -39,7 +39,7 @@ published one:
 | --- | --- | --- |
 | `503b3d2` | 2025-12-08 | Same repository query: `ownerAffiliations: OWNER`, `privacy: PUBLIC`, `isFork: false`, pagination until `hasNextPage` is false. A failed fetch stopped the run without marking the account |
 | `1d13b40` | 2025-12-10 | Failure marker added: a failed fetch sets `repositories_fetched = 1` and `last_updated = 6200-01-01` |
-| `2939eb8` | 2025-12-12 | Rate-limit errors are retried instead of marked |
+| `2939eb8` | 2025-12-12 | Rate-limit errors are retried automatically |
 | `c6d647f` | 2025-12-27 | Parallel fetching in place, with a temporary `-1` flag for accounts in progress |
 | `fe2d719` | 2026-05-17 | Same query, failure marker, row-deletion rule and follower ranges as above |
 
@@ -58,8 +58,8 @@ above:
 
 | Class | Rule | Accounts |
 | --- | --- | ---: |
-| `complete` | `repositories_fetched = 1` and not marked failed | 3,615,479 |
-| `failed` | failure marker set and profile never fetched | 56,012 |
+| `complete` | `repositories_fetched = 1` and not classified as failed | 3,615,479 |
+| `failed` | `repositories_fetched = 1`, `last_updated` equal to the failure marker and no stored biography value | 56,012 |
 | `unknown` | `repositories_fetched = -1` | 6 |
 
 Of the complete accounts, 372,821 have no stored repository row.
@@ -94,6 +94,6 @@ empty refresh can leave older rows in place.
   collector's author, these concentrate among accounts with one to four
   followers. No log of skipped cells survives.
 - The exact time each account's repositories were fetched.
-- Whether an account is a person, a bot or a shared account. Organizations
-  are excluded by the search type.
+- Whether an account is a person, a bot or a shared account. The collector
+  keeps only `User` results of the search.
 - Twenty repository IDs appear under more than one account.
