@@ -88,7 +88,7 @@ See the dataset card for details.
 Code in this repository is released under the MIT licence (`LICENSE`). The
 files under `evidence/comparison/sources/` are unmodified excerpts from
 [ecosyste-ms/repos](https://github.com/ecosyste-ms/repos) and remain under
-AGPL-3.0; see `evidence/comparison/THIRD-PARTY-NOTICES.md`. The data are
+AGPL-3.0, as described in `evidence/comparison/THIRD-PARTY-NOTICES.md`. The data are
 released under CC BY-NC 4.0. Manifest files written before the release may
 still list the licences as pending.
 
