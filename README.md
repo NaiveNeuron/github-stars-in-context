@@ -54,12 +54,22 @@ with 53,987,867 repository rows and 239,997,596 stars.
 | `02_portfolios.sql` | How concentrated are an account's stars? | Among accounts with at least 10,000 stars, the top repository holds a median 71.7% of them |
 | `02b_rank_overlap.sql` | Do total stars and the h-index select the same accounts? | The top-1,000 sets (with ties: 1,125 and 1,000 accounts) share 265 |
 | `03_owner_clustering.sql` | How often do selected repositories share an owner? | At 100 stars, 60.07% of selected rows belong to owners with more than one selected repository |
+| `04_gharchive_join.sql` | Do the repository IDs join to GH Archive? | Of 63,567 repositories with events in one hour, 17,382 are in the dataset |
 
 The h-index of an account is the largest *h* such that *h* of its
 repositories have at least *h* stars each.
 
+The fifth recipe is not part of `make parquet-check`, because it needs one
+36 MB download from GH Archive:
+
+```sh
+curl -fL -o data/gharchive-2026-01-03-0.json.gz https://data.gharchive.org/2026-01-03-0.json.gz
+.venv/bin/python -c "import duckdb; print(duckdb.sql(open('examples/recipes/04_gharchive_join.sql').read()).fetchall())"
+# [(143769, 143767, 63567, 30738, 17382)]
+```
+
 `examples/*.py` are the reference implementations that produced the paper's
-figures and the GH Archive join. They read a SQLite build of the same tables,
+figures and saved results. They read a SQLite build of the same tables,
 which is not part of the public release because the Parquet files carry the
 same rows. `expected/` holds their saved outputs. `release/PROVIDER-REBUILD.md`
 documents how the Parquet files were exported from the source database with
