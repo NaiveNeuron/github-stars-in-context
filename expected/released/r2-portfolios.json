@@ -1,0 +1,526 @@
+{
+  "provenance": {
+    "analysis_population": "code-inferred complete account portfolios",
+    "analysis_scripts_sha256": {
+      "examples/03_thresholds.py": "c7df7b1d589d02f91cb09fd96c7868674215691dd2b3c90f460d3d0e520b0e31",
+      "examples/04_portfolios.py": "b2eaee2a3c8947e8e833dd46c723b5248dc36399e91d970970c8aafb61b9f151"
+    },
+    "analysis_specification": {
+      "source": "Versioned analysis code and parameters; no local supervisor files required",
+      "thresholds": [
+        1,
+        10,
+        100,
+        1000
+      ],
+      "top_k": [
+        100,
+        1000,
+        10000
+      ]
+    },
+    "checksum_matches_expected": false,
+    "code_hashes_captured_at": "2026-11-06T10:43:45.021176+00:00",
+    "collector_semantics": {
+      "active": true,
+      "classification_basis": "persisted released account classification ledger",
+      "classification_columns_available": false,
+      "classification_ledger_used": true,
+      "limitations": [
+        "Classes are inferred from the pinned collector state machine, not independent proof of the stored repository rowset",
+        "An empty successful refresh can retain older rows because deletion runs only when seen_repo_ids is nonempty (database.py:115-120)",
+        "last_updated is shared by discovery, profile and link stages and by sentinels; it is not a repository retrieval timestamp",
+        "An all-default empty profile can represent either a failed profile request or a genuine empty profile; masking is conservative"
+      ],
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "profile_availability_ledger_used": true,
+      "profile_signature_columns_available": false,
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "rowset_completeness_independently_certified": false
+    },
+    "common_sha256": "79b3c9a8f61960cdde72c5732f4542b2658f6c68a7a6f0721d56f4eddbfec902",
+    "data_kind": "research",
+    "database_access": {
+      "cache_kib": 65536,
+      "immutable": true,
+      "mode": "ro",
+      "query_only": true,
+      "temp_store": "MEMORY"
+    },
+    "elapsed_seconds": 104.08037520805374,
+    "expected_input_sha256": null,
+    "generated_at": "2026-11-06T10:45:29.100919+00:00",
+    "independent_rowset_certification": false,
+    "input_bytes": 5964476416,
+    "input_name": "portfolios.sqlite",
+    "input_role": "released_export",
+    "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+    "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+    "manuscript_results_allowed": true,
+    "prerequisite_quality_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+    "python": "3.12.1",
+    "release_version": null,
+    "reuse_stream_sha256": "1c96c041959cfa2a74c6ab795a1d43f52259d61cd01382e719a19d1d36094cab",
+    "script": "run_reuse.py",
+    "script_path": "[provider-local-path-omitted]",
+    "script_sha256": "187fe62ec50217355deee89ea8ac0c7fdaa0f8cf9d19513282b37084e398b9f7",
+    "sidecar_sha256": {},
+    "source_audit": false,
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8"
+  },
+  "results": {
+    "analysis_code_sha256": "b2eaee2a3c8947e8e833dd46c723b5248dc36399e91d970970c8aafb61b9f151",
+    "bands": [
+      {
+        "dominant_share": {
+          "max": 1.0,
+          "median": 0.6666666666666666,
+          "min": 0.1111111111111111,
+          "n": 1065522,
+          "p05": 0.2222222222222222,
+          "p95": 1.0,
+          "q1": 0.4444444444444444,
+          "q3": 1.0,
+          "undefined_reason": null
+        },
+        "dominant_share_ge_0_9": {
+          "denominator": 1065522,
+          "n": 452450,
+          "share": 0.42462755344328884
+        },
+        "effective_breadth": {
+          "max": 9.0,
+          "median": 1.8,
+          "min": 1.0,
+          "n": 1065522,
+          "p05": 1.0,
+          "p95": 5.4,
+          "q1": 1.0,
+          "q3": 2.909090909090909,
+          "undefined_reason": null
+        },
+        "label": "1\u20139",
+        "n": 1065522,
+        "singleton_n": 53755,
+        "stars_lower_inclusive": 1,
+        "stars_upper_exclusive": 10
+      },
+      {
+        "dominant_share": {
+          "max": 1.0,
+          "median": 0.4,
+          "min": 0.010101010101010102,
+          "n": 618623,
+          "p05": 0.08333333333333333,
+          "p95": 0.9523809523809523,
+          "q1": 0.22580645161290322,
+          "q3": 0.6363636363636364,
+          "undefined_reason": null
+        },
+        "dominant_share_ge_0_9": {
+          "denominator": 618623,
+          "n": 52718,
+          "share": 0.08521829935194779
+        },
+        "effective_breadth": {
+          "max": 99.0,
+          "median": 3.8693249111725225,
+          "min": 1.0,
+          "n": 618623,
+          "p05": 1.0997506234413965,
+          "p95": 18.846153846153847,
+          "q1": 2.0864197530864197,
+          "q3": 7.511111111111111,
+          "undefined_reason": null
+        },
+        "label": "10\u201399",
+        "n": 618623,
+        "singleton_n": 10258,
+        "stars_lower_inclusive": 10,
+        "stars_upper_exclusive": 100
+      },
+      {
+        "dominant_share": {
+          "max": 1.0,
+          "median": 0.5612678119749093,
+          "min": 0.00199203187250996,
+          "n": 195210,
+          "p05": 0.1282051282051282,
+          "p95": 0.9865928630858832,
+          "q1": 0.35195530726256985,
+          "q3": 0.8211009174311926,
+          "undefined_reason": null
+        },
+        "dominant_share_ge_0_9": {
+          "denominator": 195210,
+          "n": 33179,
+          "share": 0.169965677987808
+        },
+        "effective_breadth": {
+          "max": 823.5804416403786,
+          "median": 2.5255723978679985,
+          "min": 1.0,
+          "n": 195210,
+          "p05": 1.0272058483320223,
+          "p95": 17.477759472817134,
+          "q1": 1.4531418637109468,
+          "q3": 4.790332858637063,
+          "undefined_reason": null
+        },
+        "label": "100\u2013999",
+        "n": 195210,
+        "singleton_n": 3741,
+        "stars_lower_inclusive": 100,
+        "stars_upper_exclusive": 1000
+      },
+      {
+        "dominant_share": {
+          "max": 1.0,
+          "median": 0.658578856152513,
+          "min": 0.0008032128514056225,
+          "n": 33277,
+          "p05": 0.2034130028288502,
+          "p95": 0.9940886979186828,
+          "q1": 0.4209203706612219,
+          "q3": 0.8993759750390016,
+          "undefined_reason": null
+        },
+        "dominant_share_ge_0_9": {
+          "denominator": 33277,
+          "n": 8285,
+          "share": 0.2489707605853893
+        },
+        "effective_breadth": {
+          "max": 3956.8988979396263,
+          "median": 2.0414450201207175,
+          "min": 1.0,
+          "n": 33277,
+          "p05": 1.011919603018083,
+          "p95": 10.364061193613619,
+          "q1": 1.2305225180499622,
+          "q3": 3.778703187828969,
+          "undefined_reason": null
+        },
+        "label": "1,000\u20139,999",
+        "n": 33277,
+        "singleton_n": 566,
+        "stars_lower_inclusive": 1000,
+        "stars_upper_exclusive": 10000
+      },
+      {
+        "dominant_share": {
+          "max": 1.0,
+          "median": 0.7174671689841026,
+          "min": 0.0024008990600735596,
+          "n": 2690,
+          "p05": 0.18376535241514566,
+          "p95": 0.9963783101298457,
+          "q1": 0.4339689425463957,
+          "q3": 0.9381794877511715,
+          "undefined_reason": null
+        },
+        "dominant_share_ge_0_9": {
+          "denominator": 2690,
+          "n": 847,
+          "share": 0.3148698884758364
+        },
+        "effective_breadth": {
+          "max": 4813.638780677834,
+          "median": 1.8302185184996786,
+          "min": 1.0,
+          "n": 2690,
+          "p05": 1.007279580350825,
+          "p95": 11.647426303986457,
+          "q1": 1.1341706195755101,
+          "q3": 3.644958463657205,
+          "undefined_reason": null
+        },
+        "label": "\u226510,000",
+        "n": 2690,
+        "singleton_n": 34,
+        "stars_lower_inclusive": 10000,
+        "stars_upper_exclusive": null
+      }
+    ],
+    "cohort": {
+      "complete_code_inferred_accounts": 3615479,
+      "empty_accounts": 372821,
+      "multi_repository_star_positive_accounts": 1915322,
+      "nonempty_zero_star_accounts": 1258982,
+      "retrieval_status_counts": {
+        "complete": 3615479,
+        "failed": 56012,
+        "unknown": 6
+      },
+      "singleton_star_positive_accounts": 68354,
+      "star_positive_accounts": 1983676
+    },
+    "collector_semantics": {
+      "classification_basis": "Code-inferred fetch outcome, not independent certification of current stored row-set completeness",
+      "empty_refresh_caveat": "update_user_repositories deletes obsolete rows only for a nonempty fetched list; a successful empty refresh can retain old rows",
+      "execution_history_caveat": "Provider identifies this collector; exact commands and logs still need confirmation",
+      "license_file_present": false,
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "repository": "https://github.com/Pavloffm/git-h-index",
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "source_file_sha256": {
+        "config.py": "395feea85c2bc1ca64eddc6942c8c8e7bdb52bf5f1edc3fc648833d888e422ef",
+        "data_fetching/github_parser.py": "5e11db0afccf4e48bb9ec922ee59f1b283361ebc5eab116ef5ced035bb3016e8",
+        "data_fetching/main.py": "5fbf439f342c33247cd2d9fa274d2746da5943b2f2fad5ffa8a6fcc7c90f6d72",
+        "data_fetching/users_fetching/fetch_user_links.py": "d23999eb87985b6b444431a9585917aae6b905b8ffb6dc715c6463235feb7a98",
+        "data_fetching/users_fetching/fetch_user_profile.py": "1efce9b500f5a581f73e0603ce25e0c751c260b5b7733218c6cf1872ca8aea5b",
+        "data_fetching/users_fetching/popular_users.py": "a4ca76eeb6c5338f648a398ff0dfe72db8b69782863fe7b22cb142fcedbdbe73",
+        "data_storage/database.py": "ed5ca3e99ce6826cea7ef679a609ef2a0dc3dde3f8e1e913c90d28425869e3b3"
+      }
+    },
+    "figure": {
+      "effective_breadth_axis": "logarithmic",
+      "files": [
+        {
+          "bytes": 16567,
+          "path": "r2-portfolios.pdf",
+          "sha256": "0ecbff51378bd17565ac5139e1ab561310c5066e8513521c1e4d88b28e199b75"
+        },
+        {
+          "bytes": 35936,
+          "path": "r2-portfolios.png",
+          "sha256": "0f6a480c508ce1a62bf013698f9282e1df90dcf43e3cc527371937b4075695d3"
+        }
+      ],
+      "panels": [
+        "dominant_share",
+        "effective_breadth"
+      ],
+      "width_inches": 3.5
+    },
+    "figure_files": [
+      {
+        "bytes": 16567,
+        "path": "r2-portfolios.pdf",
+        "sha256": "0ecbff51378bd17565ac5139e1ab561310c5066e8513521c1e4d88b28e199b75"
+      },
+      {
+        "bytes": 35936,
+        "path": "r2-portfolios.png",
+        "sha256": "0f6a480c508ce1a62bf013698f9282e1df90dcf43e3cc527371937b4075695d3"
+      }
+    ],
+    "h_summary_complete_cohort": {
+      "max": 253.0,
+      "median": 1.0,
+      "min": 0.0,
+      "n": 3615479,
+      "p05": 0.0,
+      "p95": 4.0,
+      "q1": 0.0,
+      "q3": 1.0,
+      "undefined_reason": null
+    },
+    "h_vs_total_stars_top_k": {
+      "comparisons": [
+        {
+          "effective_k": 100,
+          "exact_k": {
+            "h_index": {
+              "boundary_tie_n": 6,
+              "boundary_ties_excluded_n": 2,
+              "boundary_ties_selected_n": 4,
+              "cutoff": 50,
+              "selected_n": 100,
+              "selected_set_sha256": "0918d8d7a85fc80f6b61f75fb4fda97c0837b5d0020946cee73f224839534ee3",
+              "strictly_above_cutoff_n": 96
+            },
+            "jaccard": 0.1111111111111111,
+            "overlap_n": 20,
+            "overlap_share_of_k": 0.2,
+            "total_stars": {
+              "boundary_tie_n": 1,
+              "boundary_ties_excluded_n": 0,
+              "boundary_ties_selected_n": 1,
+              "cutoff": 75877,
+              "selected_n": 100,
+              "selected_set_sha256": "8d2734c17a83a2c6a03c4030d8b7a465d109ad207f7190f3365330afd856d02c",
+              "strictly_above_cutoff_n": 99
+            },
+            "undefined_reason": null
+          },
+          "requested_k": 100,
+          "tie_inclusive": {
+            "h_index": {
+              "boundary_tie_n": 6,
+              "cutoff": 50,
+              "selected_n": 102,
+              "selected_set_sha256": "16197398e503ce8b34ebbadb78523e102bdd475cd56cda63cf2a592a84cc7499"
+            },
+            "jaccard": 0.10989010989010989,
+            "overlap_n": 20,
+            "overlap_share_of_h_set": 0.19607843137254902,
+            "overlap_share_of_star_set": 0.2,
+            "total_stars": {
+              "boundary_tie_n": 1,
+              "cutoff": 75877,
+              "selected_n": 100,
+              "selected_set_sha256": "8d2734c17a83a2c6a03c4030d8b7a465d109ad207f7190f3365330afd856d02c"
+            },
+            "undefined_reason": null
+          }
+        },
+        {
+          "effective_k": 1000,
+          "exact_k": {
+            "h_index": {
+              "boundary_tie_n": 151,
+              "boundary_ties_excluded_n": 125,
+              "boundary_ties_selected_n": 26,
+              "cutoff": 25,
+              "selected_n": 1000,
+              "selected_set_sha256": "254f3535458eab8a77fe038f368162c06056070eb96095fab236869f80fad692",
+              "strictly_above_cutoff_n": 974
+            },
+            "jaccard": 0.145475372279496,
+            "overlap_n": 254,
+            "overlap_share_of_k": 0.254,
+            "total_stars": {
+              "boundary_tie_n": 1,
+              "boundary_ties_excluded_n": 0,
+              "boundary_ties_selected_n": 1,
+              "cutoff": 20020,
+              "selected_n": 1000,
+              "selected_set_sha256": "b71ba01bc5aae53b8bd10cdc2ab0085d3ce22c624b5394848978f2bdeb8e8f10",
+              "strictly_above_cutoff_n": 999
+            },
+            "undefined_reason": null
+          },
+          "requested_k": 1000,
+          "tie_inclusive": {
+            "h_index": {
+              "boundary_tie_n": 151,
+              "cutoff": 25,
+              "selected_n": 1125,
+              "selected_set_sha256": "9c4abea35096a3d7db636141795200347d14d9e63d584ef00b9af9d83bd645bd"
+            },
+            "jaccard": 0.1424731182795699,
+            "overlap_n": 265,
+            "overlap_share_of_h_set": 0.23555555555555555,
+            "overlap_share_of_star_set": 0.265,
+            "total_stars": {
+              "boundary_tie_n": 1,
+              "cutoff": 20020,
+              "selected_n": 1000,
+              "selected_set_sha256": "b71ba01bc5aae53b8bd10cdc2ab0085d3ce22c624b5394848978f2bdeb8e8f10"
+            },
+            "undefined_reason": null
+          }
+        },
+        {
+          "effective_k": 10000,
+          "exact_k": {
+            "h_index": {
+              "boundary_tie_n": 2862,
+              "boundary_ties_excluded_n": 2740,
+              "boundary_ties_selected_n": 122,
+              "cutoff": 12,
+              "selected_n": 10000,
+              "selected_set_sha256": "2cfa82e1902f0291de5d483e4ce06dc3fabc26701bdf6d273440ca48387f64a7",
+              "strictly_above_cutoff_n": 9878
+            },
+            "jaccard": 0.22737035900583,
+            "overlap_n": 3705,
+            "overlap_share_of_k": 0.3705,
+            "total_stars": {
+              "boundary_tie_n": 2,
+              "boundary_ties_excluded_n": 1,
+              "boundary_ties_selected_n": 1,
+              "cutoff": 3523,
+              "selected_n": 10000,
+              "selected_set_sha256": "02208755ae7527b80ff273d49ca6e65358180b0171a7d44f503b522c541b5841",
+              "strictly_above_cutoff_n": 9999
+            },
+            "undefined_reason": null
+          },
+          "requested_k": 10000,
+          "tie_inclusive": {
+            "h_index": {
+              "boundary_tie_n": 2862,
+              "cutoff": 12,
+              "selected_n": 12740,
+              "selected_set_sha256": "019ed310f36309e463bb84e40a5363049a77a119a19c5fdfb2c2276af5324459"
+            },
+            "jaccard": 0.22204309742597667,
+            "overlap_n": 4132,
+            "overlap_share_of_h_set": 0.32433281004709574,
+            "overlap_share_of_star_set": 0.41315868413158685,
+            "total_stars": {
+              "boundary_tie_n": 2,
+              "cutoff": 3523,
+              "selected_n": 10001,
+              "selected_set_sha256": "48937c71e9fb61d077fe104f31a9af8b2ae39421c7e4189974702f697161412f"
+            },
+            "undefined_reason": null
+          }
+        }
+      ],
+      "cutoffs": [
+        100,
+        1000,
+        10000
+      ],
+      "exact_k_policy": "descending metric, ascending numeric GitHub account ID; select min(k,n)",
+      "interpretation": "exact-k overlap and cutoff-tie-inclusive overlap have different denominators; inspect boundary ties before attributing differences to the metric",
+      "n": 3615479,
+      "set_hash_encoding": "ascending signed little-endian int64 GitHub account IDs, no header; SHA256 of empty bytes for the empty set",
+      "tie_inclusive_policy": "include every account with metric at least the metric-specific exact-k cutoff",
+      "unit": "GitHub account ID"
+    },
+    "limitations": [
+      "The complete class is inferred from the pinned collector state machine; it is not independent certification of the stored portfolio rowset",
+      "A successful empty refresh can retain stale rows in the collector, and all analyses use the stored rows",
+      "Results describe the follower-selected account population, not all GitHub accounts",
+      "Popularity means repository stars; account ownership is not authorship or individual contribution"
+    ],
+    "policies": {
+      "R2_distribution_population": "total_stars>0 and n_repositories>=2, including zero-star repositories in n_repositories",
+      "bands": "fixed total-star intervals [1,10),[10,100),[100,1000),[1000,10000),[10000,infinity)",
+      "dominant_share": "D=max_stars/total_stars; D>=0.9 evaluated exactly as 10*max_stars>=9*total_stars",
+      "effective_breadth": "total_stars**2/sum_squared_stars, using every observed repository including zero-star rows",
+      "named_account_output": "none; selected sets are represented only by SHA256 hashes",
+      "population": "retrieval_status=complete under the explicitly configured pinned collector policy or supplied evidence; code inference is not rowset certification",
+      "preregistered_top_k": [
+        100,
+        1000,
+        10000
+      ],
+      "quantiles": "NumPy linear interpolation (Hyndman-Fan type 7); p05/p95 whiskers and q1/q3 boxes",
+      "ranking_population": "all complete-code-inferred accounts, including zero-star and empty portfolios; unique numeric GitHub account IDs",
+      "singletons": "total_stars>0 and n_repositories=1, counted separately per band and excluded from distribution boxes"
+    },
+    "quality_evidence": {
+      "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+      "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+      "physical_checks": {
+        "duplicate_key_excess_rows": 0,
+        "invalid_stars": 0,
+        "orphan_repository_rows": 0
+      },
+      "quality_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+      "retrieval_classes": {
+        "complete": 3615479,
+        "failed": 56012,
+        "partial": 0,
+        "unknown": 6,
+        "unprocessed": 0
+      }
+    },
+    "shared_stream": {
+      "account_linked_repository_rows": 53990808,
+      "accounts": 3671497,
+      "data_pass_seconds": 95.79382391704712,
+      "h_stored_mismatches": 0,
+      "retrieval_class_counts": {
+        "complete": 3615479,
+        "failed": 56012,
+        "unknown": 6
+      }
+    }
+  }
+}

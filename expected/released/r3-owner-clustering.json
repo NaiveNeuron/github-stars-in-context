@@ -1,0 +1,267 @@
+{
+  "provenance": {
+    "analysis_population": "code-inferred complete account portfolios",
+    "checksum_matches_expected": false,
+    "code_hashes_captured_at": "2026-11-06T10:44:02.076774+00:00",
+    "collector_semantics": {
+      "active": true,
+      "classification_basis": "persisted released account classification ledger",
+      "classification_columns_available": false,
+      "classification_ledger_used": true,
+      "limitations": [
+        "Classes are inferred from the pinned collector state machine, not independent proof of the stored repository rowset",
+        "An empty successful refresh can retain older rows because deletion runs only when seen_repo_ids is nonempty (database.py:115-120)",
+        "last_updated is shared by discovery, profile and link stages and by sentinels; it is not a repository retrieval timestamp",
+        "An all-default empty profile can represent either a failed profile request or a genuine empty profile; masking is conservative"
+      ],
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "profile_availability_ledger_used": true,
+      "profile_signature_columns_available": false,
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "rowset_completeness_independently_certified": false
+    },
+    "common_sha256": "79b3c9a8f61960cdde72c5732f4542b2658f6c68a7a6f0721d56f4eddbfec902",
+    "data_kind": "research",
+    "database_access": {
+      "cache_kib": 65536,
+      "immutable": true,
+      "mode": "ro",
+      "query_only": true,
+      "temp_store": "MEMORY"
+    },
+    "elapsed_seconds": 93.42356925003696,
+    "expected_input_sha256": null,
+    "generated_at": "2026-11-06T10:45:35.500065+00:00",
+    "independent_rowset_certification": false,
+    "input_bytes": 5964476416,
+    "input_name": "portfolios.sqlite",
+    "input_role": "released_export",
+    "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+    "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+    "manuscript_results_allowed": true,
+    "prerequisite_quality_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+    "python": "3.12.1",
+    "release_version": null,
+    "reuse_stream_sha256": "1c96c041959cfa2a74c6ab795a1d43f52259d61cd01382e719a19d1d36094cab",
+    "script": "05_owner_clustering.py",
+    "script_path": "[provider-local-path-omitted]",
+    "script_sha256": "79116bd31914b8b6c16639fabcc7b8df9842c3272a6635dc6986bc2b0de77e5f",
+    "sidecar_sha256": {},
+    "source_audit": false,
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8"
+  },
+  "results": {
+    "baseline": {
+      "account_linked_repository_rows": 53987867,
+      "complete_class_accounts": 3615479
+    },
+    "collector_semantics": {
+      "classification_basis": "Code-inferred fetch outcome, not independent certification of current stored row-set completeness",
+      "empty_refresh_caveat": "update_user_repositories deletes obsolete rows only for a nonempty fetched list; a successful empty refresh can retain old rows",
+      "execution_history_caveat": "Provider identifies this collector; exact commands and logs still need confirmation",
+      "license_file_present": false,
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "repository": "https://github.com/Pavloffm/git-h-index",
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "source_file_sha256": {
+        "config.py": "395feea85c2bc1ca64eddc6942c8c8e7bdb52bf5f1edc3fc648833d888e422ef",
+        "data_fetching/github_parser.py": "5e11db0afccf4e48bb9ec922ee59f1b283361ebc5eab116ef5ced035bb3016e8",
+        "data_fetching/main.py": "5fbf439f342c33247cd2d9fa274d2746da5943b2f2fad5ffa8a6fcc7c90f6d72",
+        "data_fetching/users_fetching/fetch_user_links.py": "d23999eb87985b6b444431a9585917aae6b905b8ffb6dc715c6463235feb7a98",
+        "data_fetching/users_fetching/fetch_user_profile.py": "1efce9b500f5a581f73e0603ce25e0c751c260b5b7733218c6cf1872ca8aea5b",
+        "data_fetching/users_fetching/popular_users.py": "a4ca76eeb6c5338f648a398ff0dfe72db8b69782863fe7b22cb142fcedbdbe73",
+        "data_storage/database.py": "ed5ca3e99ce6826cea7ef679a609ef2a0dc3dde3f8e1e913c90d28425869e3b3"
+      }
+    },
+    "input_account_records_by_retrieval_class": {
+      "complete": 3615479,
+      "failed": 56012,
+      "unknown": 6
+    },
+    "parameters": {
+      "quantile_probabilities": [
+        0,
+        0.25,
+        0.5,
+        0.75,
+        0.9,
+        0.95,
+        0.99,
+        1
+      ],
+      "thresholds": [
+        1,
+        10,
+        100,
+        1000
+      ]
+    },
+    "policies": {
+      "clustered_repository_fraction": "Sum selected rows from owners contributing at least two selected rows, divided by all selected rows",
+      "completeness": "Complete means code-inferred fetch completion, not independent stored-rowset certification",
+      "distribution": "Equal owner weights; count only positive selected-row counts. Empty, zero-star and otherwise unretained accounts remain in the baseline but not the retained-owner distribution",
+      "empty_refresh": "The pinned collector can retain older rows after an empty refresh because stale-row deletion requires nonempty seen_repo_ids",
+      "identifiers": "No account names, IDs or split manifests saved in this evidence",
+      "interpretation": "Repeated ownership describes clustering that can inform owner-aware splitting. No benchmark train/test overlap or predictive performance is measured",
+      "multi_owner_definition": "An owner contributes at least two selected rows at the same threshold. Its total unfiltered portfolio size is not the criterion",
+      "multi_owner_fraction": "Number of retained owners contributing at least two selected rows, divided by all retained owners",
+      "owner_unit": "One source account record with at least one selected row; prerequisite quality checks require unique source account keys",
+      "population": "Account records classified complete under the revision-pinned collector policy",
+      "repository_unit": "Account-linked rows, not globally deduplicated GitHub repository IDs. An ID stored under more than one account is counted in each stored ownership context",
+      "sampling_scope": "Follower-selected public non-fork repository population in the supplied snapshot, not all GitHub accounts",
+      "threshold": "Select each account-linked repository row with stars >= threshold, including equality",
+      "zero_denominators": "Shares, means and quantiles are null when no relevant population exists"
+    },
+    "quality_evidence": {
+      "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+      "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+      "physical_checks": {
+        "duplicate_key_excess_rows": 0,
+        "invalid_stars": 0,
+        "orphan_repository_rows": 0
+      },
+      "quality_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+      "retrieval_classes": {
+        "complete": 3615479,
+        "failed": 56012,
+        "partial": 0,
+        "unknown": 6,
+        "unprocessed": 0
+      }
+    },
+    "thresholds": [
+      {
+        "owners_with_exactly_one_selected_row": 545522,
+        "owners_with_multiple_selected_rows": {
+          "denominator": 1983676,
+          "numerator": 1438154,
+          "share": 0.7249944043281261
+        },
+        "selected_account_linked_repository_rows": 12534956,
+        "selected_repository_rows_per_owner": {
+          "denominator_owners": 1983676,
+          "mean": 6.319054119725197,
+          "quantile_method": "NumPy linear interpolation (Hyndman-Fan type 7)",
+          "quantiles": {
+            "max": 9971,
+            "median": 3.0,
+            "min": 1,
+            "p90": 14.0,
+            "p95": 22.0,
+            "p99": 46.0,
+            "q1": 1.0,
+            "q3": 7.0
+          },
+          "undefined_reason": null
+        },
+        "selected_rows_from_owners_with_multiple_selected_rows": {
+          "denominator": 12534956,
+          "numerator": 11989434,
+          "share": 0.9564799429690858
+        },
+        "selected_rows_from_single_selected_row_owners": 545522,
+        "threshold": 1,
+        "unique_owners": 1983676
+      },
+      {
+        "owners_with_exactly_one_selected_row": 268535,
+        "owners_with_multiple_selected_rows": {
+          "denominator": 547003,
+          "numerator": 278468,
+          "share": 0.50907947488405
+        },
+        "selected_account_linked_repository_rows": 1560798,
+        "selected_repository_rows_per_owner": {
+          "denominator_owners": 547003,
+          "mean": 2.853362778631927,
+          "quantile_method": "NumPy linear interpolation (Hyndman-Fan type 7)",
+          "quantiles": {
+            "max": 1067,
+            "median": 2.0,
+            "min": 1,
+            "p90": 6.0,
+            "p95": 9.0,
+            "p99": 20.0,
+            "q1": 1.0,
+            "q3": 3.0
+          },
+          "undefined_reason": null
+        },
+        "selected_rows_from_owners_with_multiple_selected_rows": {
+          "denominator": 1560798,
+          "numerator": 1292263,
+          "share": 0.8279501895825084
+        },
+        "selected_rows_from_single_selected_row_owners": 268535,
+        "threshold": 10,
+        "unique_owners": 547003
+      },
+      {
+        "owners_with_exactly_one_selected_row": 107542,
+        "owners_with_multiple_selected_rows": {
+          "denominator": 154387,
+          "numerator": 46845,
+          "share": 0.30342580657697865
+        },
+        "selected_account_linked_repository_rows": 269316,
+        "selected_repository_rows_per_owner": {
+          "denominator_owners": 154387,
+          "mean": 1.7444214862650353,
+          "quantile_method": "NumPy linear interpolation (Hyndman-Fan type 7)",
+          "quantiles": {
+            "max": 456,
+            "median": 1.0,
+            "min": 1,
+            "p90": 3.0,
+            "p95": 4.0,
+            "p99": 10.0,
+            "q1": 1.0,
+            "q3": 2.0
+          },
+          "undefined_reason": null
+        },
+        "selected_rows_from_owners_with_multiple_selected_rows": {
+          "denominator": 269316,
+          "numerator": 161774,
+          "share": 0.6006846975300391
+        },
+        "selected_rows_from_single_selected_row_owners": 107542,
+        "threshold": 100,
+        "unique_owners": 154387
+      },
+      {
+        "owners_with_exactly_one_selected_row": 19374,
+        "owners_with_multiple_selected_rows": {
+          "denominator": 23443,
+          "numerator": 4069,
+          "share": 0.17356993558844858
+        },
+        "selected_account_linked_repository_rows": 31056,
+        "selected_repository_rows_per_owner": {
+          "denominator_owners": 23443,
+          "mean": 1.3247451264769867,
+          "quantile_method": "NumPy linear interpolation (Hyndman-Fan type 7)",
+          "quantiles": {
+            "max": 91,
+            "median": 1.0,
+            "min": 1,
+            "p90": 2.0,
+            "p95": 3.0,
+            "p99": 6.0,
+            "q1": 1.0,
+            "q3": 1.0
+          },
+          "undefined_reason": null
+        },
+        "selected_rows_from_owners_with_multiple_selected_rows": {
+          "denominator": 31056,
+          "numerator": 11682,
+          "share": 0.3761591962905719
+        },
+        "selected_rows_from_single_selected_row_owners": 19374,
+        "threshold": 1000,
+        "unique_owners": 23443
+      }
+    ]
+  }
+}

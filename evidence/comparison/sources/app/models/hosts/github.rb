@@ -1,0 +1,593 @@
+module Hosts
+  class Github < Base
+    IGNORABLE_EXCEPTIONS = [
+      Octokit::Unauthorized,
+      Octokit::InvalidRepository,
+      # Octokit::RepositoryUnavailable,
+      # Octokit::NotFound,
+      Octokit::Conflict,
+      # Octokit::Forbidden,
+      Octokit::InternalServerError,
+      Octokit::BadGateway,
+      # Octokit::UnavailableForLegalReasons
+      Octokit::SAMLProtected
+    ]
+
+    def self.api_missing_error_class
+      [
+        Octokit::NotFound,
+        Octokit::RepositoryUnavailable,
+        Octokit::UnavailableForLegalReasons
+      ]
+    end
+
+    def icon
+      "github"
+    end
+
+    def token_set_key
+      "github_tokens"
+    end
+
+    def list_tokens
+      REDIS.smembers(token_set_key)
+    end
+
+    def fetch_random_token
+      GithubTokenPool.new.fetch(list_tokens)
+    end
+
+    def add_tokens(tokens)
+      REDIS.sadd(token_set_key, tokens)
+    end
+
+    def remove_token(token)
+      REDIS.srem(token_set_key, token)
+    end
+
+    def check_tokens
+      list_tokens.each do |token|
+        api_client(token).rate_limit!
+      rescue Octokit::Unauthorized, Octokit::AccountSuspended
+        puts "Removing token #{token}"
+        remove_token(token)
+      end
+    end
+
+    def html_url(repository)
+      "https://github.com/#{repository.full_name}"
+    end
+
+    def avatar_url(repository, size = 40)
+      "https://github.com/#{repository.owner}.png#{"?s=#{size}" if size}"
+    end
+
+    def download_url(repository, branch = nil, kind = "branch")
+      if kind == "branch"
+        branch = repository.default_branch if branch.nil?
+        branch = "master" if branch.blank?
+        "https://codeload.github.com/#{repository.full_name}/tar.gz/refs/heads/#{branch}"
+      else
+        branch = "master" if branch.blank?
+        "https://codeload.github.com/#{repository.full_name}/tar.gz/#{branch}"
+      end
+    end
+
+    def tag_url(repository, tag_name)
+      "#{url(repository)}/releases/tag/#{tag_name}"
+    end
+
+    def watchers_url(repository)
+      "#{url(repository)}/watchers"
+    end
+
+    def forks_url(repository)
+      "#{url(repository)}/network"
+    end
+
+    def stargazers_url(repository)
+      "#{url(repository)}/stargazers"
+    end
+
+    def contributors_url(repository)
+      "#{url(repository)}/graphs/contributors"
+    end
+
+    def blob_url(repository, sha = nil)
+      sha ||= repository.default_branch
+      "#{url(repository)}/blob/#{sha}/"
+    end
+
+    def commits_url(repository, author = nil)
+      author_param = author.present? ? "?author=#{author}" : ""
+      "#{url(repository)}/commits#{author_param}"
+    end
+
+    def topic_url(topic)
+      "#{@host.url}/topics/#{topic}"
+    end
+
+    def fetch_repository(id_or_name)
+      id_or_name = id_or_name.to_i if /\A\d+\Z/.match?(id_or_name)
+      repo_response = api_client.repo(id_or_name, accept: "application/vnd.github.drax-preview+json,application/vnd.github.mercy-preview+json")
+      return nil if repo_response.nil?
+      hash = repo_response.to_hash.with_indifferent_access
+      return nil if hash[:private]
+      map_repository_data(hash)
+    end
+
+    def map_repository_data(hash)
+      hash[:scm] = "git"
+      hash[:uuid] = hash[:id]
+      hash[:license] = hash[:license][:key] if hash[:license]
+      hash[:owner] = hash[:owner][:login] if hash[:owner]
+      hash[:pull_requests_enabled] = true
+      hash[:template] = hash[:is_template]
+      hash[:template_full_name] = hash[:template_repository][:full_name] if hash[:template_repository]
+
+      if hash[:fork] && hash[:parent]
+        hash[:source_name] = hash[:parent][:full_name]
+      end
+
+      hash = hash.transform_values { |v| v.is_a?(String) ? v.gsub(/\000/, "") : v }
+
+      hash.slice(*repository_columns)
+    end
+
+    def get_file_list(repository)
+      tree = api_client.tree(repository.full_name, repository.default_branch, recursive: true).tree
+      tree.select { |item| item.type == "blob" }.map { |file| file.path }
+    rescue *IGNORABLE_EXCEPTIONS, Octokit::NotFound, Octokit::RepositoryUnavailable, Octokit::UnavailableForLegalReasons
+      nil
+    end
+
+    def get_file_contents(repository, path)
+      file = api_client.contents(repository.full_name, path: path)
+      {
+        sha: file.sha,
+        content: file.content.present? ? Base64.decode64(file.content) : file.content
+      }
+    rescue URI::InvalidURIError
+      nil
+    rescue *IGNORABLE_EXCEPTIONS, Octokit::NotFound, Octokit::RepositoryUnavailable, Octokit::UnavailableForLegalReasons
+      nil
+    end
+
+    def download_tags(repository)
+      tags, complete = fetch_tags(repository)
+      return unless tags.present?
+
+      now = Time.current
+      existing_tags = repository.tags.pluck(:name, :sha).to_h
+      remote_names = tags.map { |tag| tag[:name] }
+
+      moved_tags = tags.select do |tag|
+        existing_tags.key?(tag[:name]) && existing_tags[tag[:name]] != tag[:sha]
+      end
+      moved_tags.each do |tag|
+        repository.tags.where(name: tag[:name]).update_all(
+          sha: tag[:sha],
+          kind: tag[:kind],
+          published_at: tag[:published_at],
+          dependencies_parsed_at: nil,
+          dependency_job_id: nil,
+          updated_at: now
+        )
+      end
+      if moved_tags.any?
+        moved_tag_ids = repository.tags.where(name: moved_tags.map { |tag| tag[:name] }).select(:id)
+        repository.releases.where(tag_id: moved_tag_ids).update_all(updated_at: now)
+      end
+
+      new_tags = tags.reject { |tag| existing_tags.key?(tag[:name]) }
+      if new_tags.any?
+        tag_records = new_tags.map do |tag|
+          tag.merge(repository_id: repository.id, created_at: now, updated_at: now)
+        end
+        Tag.insert_all(tag_records)
+        repository.link_releases_to_tags(tag_names: new_tags.map { |tag| tag[:name] }, now: now)
+      end
+
+      if complete
+        orphan_tag_ids = repository.tags.where.not(name: remote_names).pluck(:id)
+        if orphan_tag_ids.any?
+          repository.releases.where(tag_id: orphan_tag_ids).update_all(tag_id: nil, updated_at: now)
+          orphan_manifest_ids = Manifest.where(tag_id: orphan_tag_ids).pluck(:id)
+          Dependency.where(manifest_id: orphan_manifest_ids).delete_all if orphan_manifest_ids.any?
+          Manifest.where(id: orphan_manifest_ids).delete_all if orphan_manifest_ids.any?
+          Tag.where(id: orphan_tag_ids).delete_all
+        end
+      end
+
+      repository.update_columns(tags_last_synced_at: now, tags_count: repository.tags.count)
+    rescue *IGNORABLE_EXCEPTIONS, Octokit::NotFound, Octokit::RepositoryUnavailable, Octokit::UnavailableForLegalReasons
+      nil
+    end
+
+    def download_releases(repository)
+      releases, complete = fetch_releases(repository)
+      return unless releases.present?
+
+      # Get existing release UUIDs in one query
+      release_uuids = releases.map { |release| release[:uuid].to_s }
+      existing_rows = repository.releases.where(uuid: release_uuids).pluck(:uuid, :immutable, :tag_id)
+      existing_releases = existing_rows.to_h { |uuid, immutable, _tag_id| [uuid, immutable] }
+      unlinked_uuids = existing_rows.select { |_uuid, _immutable, tag_id| tag_id.nil? }.map(&:first).to_set
+
+      # Refresh immutability when the stored value differs from GitHub
+      changed_releases = releases.select do |release|
+        uuid = release[:uuid].to_s
+        existing_releases.key?(uuid) && existing_releases[uuid] != release[:immutable]
+      end
+      now = Time.current
+      changed_releases.group_by { |release| release[:immutable] }.each do |immutable, grouped_releases|
+        uuids = grouped_releases.map { |release| release[:uuid].to_s }
+        repository.releases.where(uuid: uuids).update_all(
+          immutable: immutable,
+          last_synced_at: now,
+          updated_at: now
+        )
+      end
+
+      # Filter out existing releases
+      new_releases = releases.reject { |release| existing_releases.key?(release[:uuid].to_s) }
+
+      if new_releases.any?
+        tag_ids = repository.tags.where(name: new_releases.map { |release| release[:tag_name] }).pluck(:name, :id).to_h
+
+        # Prepare records for bulk insert
+        release_records = new_releases.map do |release|
+          release.merge(
+            repository_id: repository.id,
+            tag_id: tag_ids[release[:tag_name]],
+            created_at: now,
+            updated_at: now
+          )
+        end
+
+        # Bulk insert new releases only
+        Release.insert_all(release_records)
+        repository.tags.where(id: tag_ids.values).update_all(updated_at: now) if tag_ids.any?
+      end
+
+      unlinked_tag_names = releases.select { |release| unlinked_uuids.include?(release[:uuid].to_s) }.map { |release| release[:tag_name] }
+      repository.link_releases_to_tags(tag_names: unlinked_tag_names, now: now) if unlinked_tag_names.any?
+
+      if complete
+        removed_releases = repository.releases.where.not(uuid: release_uuids)
+        repository.tags.where(id: removed_releases.select(:tag_id)).update_all(updated_at: now)
+        removed_releases.delete_all
+      end
+
+      nil
+    rescue *IGNORABLE_EXCEPTIONS, Octokit::NotFound, Octokit::RepositoryUnavailable, Octokit::UnavailableForLegalReasons
+      nil
+    end
+
+    def fetch_releases(repository, max_pages: 10)
+      client = api_client(nil, auto_paginate: false)
+      releases = []
+      response = client.releases(repository.full_name, per_page: 100)
+      releases.concat(response)
+
+      last_resp = client.last_response
+      pages_fetched = 1
+      while pages_fetched < max_pages && last_resp.rels[:next]
+        last_resp = last_resp.rels[:next].get
+        releases.concat(last_resp.data)
+        pages_fetched += 1
+      end
+      complete = last_resp.rels[:next].blank?
+
+      mapped = releases.map do |release|
+        {
+          uuid: release.id,
+          tag_name: release.tag_name,
+          target_commitish: release.target_commitish,
+          name: release.name,
+          body: release.body.try(:delete, "\u0000"),
+          draft: release.draft,
+          prerelease: release.prerelease,
+          immutable: release.immutable,
+          created_at: release.created_at,
+          published_at: release.published_at,
+          author: release.author.try(:login),
+          assets: release.assets.map { |a| a.to_hash.with_indifferent_access },
+          last_synced_at: Time.now
+        }
+      end
+      [mapped, complete]
+    rescue *IGNORABLE_EXCEPTIONS, Octokit::NotFound, Octokit::UnprocessableEntity, Octokit::RepositoryUnavailable, Octokit::UnavailableForLegalReasons
+      [[], false]
+    end
+
+    def load_owner_repos_names(owner, max_pages: 10)
+      client = api_client(nil, auto_paginate: false)
+      repos = []
+      response = client.repos(owner.login, type: "all", per_page: 100)
+      repos.concat(response.map { |repo| repo[:full_name] })
+
+      last_resp = client.last_response
+      pages_fetched = 1
+      while pages_fetched < max_pages && last_resp.rels[:next]
+        last_resp = last_resp.rels[:next].get
+        repos.concat(last_resp.data.map { |repo| repo[:full_name] })
+        pages_fetched += 1
+      end
+
+      repos
+    rescue *IGNORABLE_EXCEPTIONS, Octokit::NotFound
+      []
+    end
+
+    def fetch_tags(repository, max_pages: 10)
+      tags = []
+      res = fetch_tags_graphql(repository)
+      return [nil, false] if res[:data].nil? || res[:data][:repository].nil? || res[:data][:repository][:refs].nil?
+
+      tags += map_tags(res)
+      pages_fetched = 1
+      while pages_fetched < max_pages && res.dig(:data, :repository, :refs, :pageInfo, :hasNextPage)
+        res = fetch_tags_graphql(repository, res[:data][:repository][:refs][:pageInfo][:endCursor])
+        tags += map_tags(res)
+        pages_fetched += 1
+      end
+      complete = !res.dig(:data, :repository, :refs, :pageInfo, :hasNextPage)
+      [tags, complete]
+    end
+
+    def fetch_tags_graphql(repository, cursor = nil)
+      query = <<-GRAPHQL
+        {
+          repository(owner: "#{repository.owner}", name: "#{repository.project_name}") {
+            refs(
+              refPrefix: "refs/tags/"
+              orderBy: {field: TAG_COMMIT_DATE, direction: DESC}
+              first: 100
+              #{", after: \"#{cursor}\"" if cursor.present?}
+            ) {
+              pageInfo{
+                startCursor
+                hasNextPage
+                endCursor
+              }
+              nodes {
+                name
+                target {
+                  __typename
+                  ... on Commit{
+                    oid
+                    committer{
+                      ... on GitActor {
+                        date
+                      }
+                    }
+                  }
+                  ... on Tag {
+                    target {
+                      ... on GitObject {
+                        oid
+                      }
+                    }
+                    tagger {
+                      ... on GitActor {
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      GRAPHQL
+      res = api_client.post("/graphql", {query: query}.to_json).to_h
+    end
+
+    def map_tags(tags)
+      return [] unless tags && tags[:data] && tags[:data][:repository] && tags[:data][:repository][:refs]
+      tags[:data][:repository][:refs][:nodes].map do |tag|
+        next if tag.nil? || tag[:target].nil?
+        if tag[:target][:__typename] == "Tag"
+          {
+            name: tag[:name],
+            sha: tag[:target][:target][:oid],
+            published_at: tag[:target][:tagger][:date],
+            kind: "tag"
+          }
+        elsif tag[:target][:__typename] == "Commit"
+          {
+            name: tag[:name],
+            sha: tag[:target][:oid],
+            published_at: tag[:target][:committer][:date],
+            kind: "commit"
+          }
+        end
+      end.compact
+    end
+
+    def fetch_owner(login)
+      query = <<-GRAPHQL
+        {
+          repositoryOwner(login: "#{login}") {
+            login
+            __typename
+            ... on User {
+              hasSponsorsListing
+              name
+              databaseId
+              bio
+              email
+              websiteUrl
+              location
+              twitterUsername
+              avatarUrl
+              company
+              followers {
+                totalCount
+              }
+              following {
+                totalCount
+              } 
+            }
+            ... on Organization{
+              hasSponsorsListing
+              name
+              databaseId
+              description
+              email
+              websiteUrl
+              location
+              twitterUsername
+              avatarUrl
+            }
+          }
+        }
+      GRAPHQL
+      res = api_client.post("/graphql", {query: query}.to_json).to_h
+      return nil unless res && res[:data] && res[:data][:repositoryOwner].present?
+      kind = res[:data][:repositoryOwner][:__typename].downcase
+
+      hash = {
+        login: res[:data][:repositoryOwner][:login],
+        name: res[:data][:repositoryOwner][:name],
+        uuid: res[:data][:repositoryOwner][:databaseId],
+        description: res[:data][:repositoryOwner][:description] || res[:data][:repositoryOwner][:bio],
+        email: res[:data][:repositoryOwner][:email],
+        website: res[:data][:repositoryOwner][:websiteUrl],
+        location: res[:data][:repositoryOwner][:location],
+        twitter: res[:data][:repositoryOwner][:twitterUsername],
+        company: res[:data][:repositoryOwner][:company],
+        kind: kind,
+        avatar_url: res[:data][:repositoryOwner][:avatarUrl],
+        followers: res.dig(:data, :repositoryOwner, :followers, :totalCount),
+        following: res.dig(:data, :repositoryOwner, :following, :totalCount),
+        metadata: {
+          has_sponsors_listing: res[:data][:repositoryOwner][:hasSponsorsListing]
+        }
+      }
+      if kind == "organization"
+        begin
+          rest_res = api_client.organization(login)
+          hash[:followers] = rest_res[:followers]
+          hash[:following] = rest_res[:following]
+        rescue
+          nil
+        end
+      elsif ENV["SKIP_USER_REPOS"].present?
+        return nil
+      end
+      hash
+    end
+
+    def recently_changed_repo_names(since = 1.hour)
+      first_response = load_repo_names
+      return [] if first_response.blank?
+      names = Array(first_response["names"])
+      most_recent = first_response["newest"]["created_at"]
+      target_time = Time.parse(most_recent) - since
+      next_id = first_response["oldest"]["id"]
+
+      next_response = load_repo_names(next_id)
+      return names.uniq if next_response.blank?
+      names = (names + next_response["names"]).uniq
+      next_id = next_response["oldest"]["id"]
+
+      while Time.parse(next_response["oldest"]["created_at"]) > target_time
+        next_response = load_repo_names(next_id)
+        break if next_response.blank?
+        names = (names + next_response["names"]).uniq
+        next_id = next_response["oldest"]["id"]
+      end
+
+      names.uniq
+    end
+
+    def sync_repos_with_tags
+      data = load_repos_with_tags
+      return if data.nil?
+      names = data.map { |r| r["repository"] }.uniq
+      host = Host.find_by_name("GitHub")
+      names.each do |name|
+        repository = host.find_repository(name.downcase)
+        if repository
+          repository.download_tags_async
+        else
+          host.sync_repository_async(name)
+        end
+      end
+    end
+
+    def load_repos_with_tags(id = nil)
+      connection = ecosystem_connection(TIMELINE_DOMAIN)
+      begin
+        resp = connection.get("/api/v1/events?per_page=100&event_type=ReleaseEvent&before=#{id}") do |req|
+          req.options.timeout = 5
+        end
+
+        if resp.success?
+          Oj.load(resp.body) || []
+        else
+          []
+        end
+      rescue Faraday::Error
+        []
+      end
+    end
+
+    def load_repo_names(id = nil)
+      puts "loading repo names since #{id}"
+      connection = ecosystem_connection(TIMELINE_DOMAIN)
+      path = "/api/v1/events/repository_names"
+      path = "#{path}?before=#{id}" if id.present?
+      begin
+        resp = connection.get(path) do |req|
+          req.options.timeout = 5
+        end
+
+        if resp.success?
+          Oj.load(resp.body)
+        else
+          {}
+        end
+      rescue Faraday::Error
+        {}
+      end
+    end
+
+    def events_for_repo(full_name, event_type: nil, per_page: 100)
+      connection = ecosystem_connection(TIMELINE_DOMAIN)
+      path = "/api/v1/events/#{full_name}?per_page=#{per_page}"
+      path = "#{path}&event_type=#{event_type}" if event_type.present?
+
+      begin
+        resp = connection.get(path) do |req|
+          req.options.timeout = 5
+        end
+
+        if resp.success?
+          Oj.load(resp.body)
+        else
+          {}
+        end
+      rescue Faraday::Error
+        {}
+      end
+    end
+
+    def attempt_load_from_timeline(full_name)
+      events = events_for_repo(full_name, event_type: "PullRequestEvent", per_page: 1)
+      return nil if events.blank?
+      events.first["payload"]["pull_request"]["base"]["repo"].to_hash.with_indifferent_access
+    rescue
+      nil
+    end
+
+    private
+
+    def api_client(token = nil, options = {})
+      token = fetch_random_token if token.nil?
+      Octokit::Client.new({access_token: token, auto_paginate: true}.merge(options))
+    end
+  end
+end

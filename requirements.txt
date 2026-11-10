@@ -1,0 +1,6 @@
+# Tested with CPython 3.12.1 on 2026-11-06.
+# Analysis/export dependencies only. SQLite and unittest are in Python.
+numpy==2.5.4
+pyarrow==23.0.1
+matplotlib==3.11.2
+duckdb==2.0.0

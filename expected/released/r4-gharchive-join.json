@@ -1,0 +1,353 @@
+{
+  "provenance": {
+    "analysis_population": "code-inferred complete account portfolios",
+    "checksum_matches_expected": false,
+    "code_hashes_captured_at": "2026-11-06T10:44:02.059797+00:00",
+    "collector_semantics": {
+      "active": true,
+      "classification_basis": "persisted released account classification ledger",
+      "classification_columns_available": false,
+      "classification_ledger_used": true,
+      "limitations": [
+        "Classes are inferred from the pinned collector state machine, not independent proof of the stored repository rowset",
+        "An empty successful refresh can retain older rows because deletion runs only when seen_repo_ids is nonempty (database.py:115-120)",
+        "last_updated is shared by discovery, profile and link stages and by sentinels; it is not a repository retrieval timestamp",
+        "An all-default empty profile can represent either a failed profile request or a genuine empty profile; masking is conservative"
+      ],
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "profile_availability_ledger_used": true,
+      "profile_signature_columns_available": false,
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "rowset_completeness_independently_certified": false
+    },
+    "common_sha256": "79b3c9a8f61960cdde72c5732f4542b2658f6c68a7a6f0721d56f4eddbfec902",
+    "data_kind": "research",
+    "database_access": {
+      "cache_kib": 65536,
+      "immutable": true,
+      "mode": "ro",
+      "query_only": true,
+      "temp_store": "MEMORY"
+    },
+    "elapsed_seconds": 53.740392082952894,
+    "expected_input_sha256": null,
+    "generated_at": "2026-11-06T10:44:55.799931+00:00",
+    "independent_rowset_certification": false,
+    "input_bytes": 5964476416,
+    "input_name": "portfolios.sqlite",
+    "input_role": "released_export",
+    "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+    "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+    "manuscript_results_allowed": true,
+    "prerequisite_quality_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+    "python": "3.12.1",
+    "release_version": null,
+    "reuse_stream_sha256": "1c96c041959cfa2a74c6ab795a1d43f52259d61cd01382e719a19d1d36094cab",
+    "script": "06_gharchive_join.py",
+    "script_path": "[provider-local-path-omitted]",
+    "script_sha256": "40d0371c6d8d5d47868f1765b0cfb656f65739252ee285bc18c69151f9b83a54",
+    "sidecar_sha256": {},
+    "source_audit": false,
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8"
+  },
+  "results": {
+    "archive": {
+      "compressed_bytes": 36491318,
+      "compressed_sha256": "30e3b4e3c8630f47cd72e21ee4b373d8daecfdf6b38d6637aaf93afb2b1bafea",
+      "counts": {
+        "blank_lines": 0,
+        "events": 143769,
+        "events_missing_or_invalid_repo_id": 2,
+        "events_missing_or_invalid_type": 0,
+        "events_with_valid_repo_id": 143767,
+        "lines": 143769,
+        "malformed_json_lines": 0,
+        "nonobject_json_lines": 0
+      },
+      "documentation_url": "https://www.gharchive.org/",
+      "gzip_consumed_to_eof": true,
+      "hour_utc": "2026-01-03T00:00:00Z",
+      "http": {
+        "final_url": "https://data.gharchive.org/2026-01-03-0.json.gz",
+        "headers": {
+          "content-length": "36491318",
+          "content-type": "application/gzip",
+          "date": "Fri, 06 Nov 2026 10:44:14 GMT",
+          "etag": "\"bb6b1ea0be6489af411baab818498e0d\"",
+          "last-modified": "Sat, 03 Jan 2026 01:05:11 GMT",
+          "x-goog-generation": "1767402311475973",
+          "x-goog-hash": "crc32c=Q8Tcgg==",
+          "x-goog-metageneration": "1"
+        },
+        "requested_url": "https://data.gharchive.org/2026-01-03-0.json.gz",
+        "status": 200,
+        "stream_seconds": 3.2653629580745474
+      },
+      "plaintext_bytes": 198994324,
+      "plaintext_sha256": "761c7d8a5383b164e44b33e3247c6d3847fce6e21df03936e86383e67cc80a55",
+      "raw_archive_saved": false,
+      "url": "https://data.gharchive.org/2026-01-03-0.json.gz"
+    },
+    "join": {
+      "all_event_match_fraction": {
+        "denominator": 143769,
+        "numerator": 30738,
+        "share": 0.21380130626212884
+      },
+      "distinct_repository_match_fraction": {
+        "denominator": 63567,
+        "numerator": 17382,
+        "share": 0.2734437679928265
+      },
+      "event_type_breakdown": [
+        {
+          "all_events": 95,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 95,
+          "matched_distinct_repository_ids": 9,
+          "matched_events": 21,
+          "naive_event_to_source_row_join_pairs": 21,
+          "type": "CommitCommentEvent",
+          "unmatched_distinct_repository_ids": 47,
+          "unmatched_events": 74
+        },
+        {
+          "all_events": 7995,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 7995,
+          "matched_distinct_repository_ids": 704,
+          "matched_events": 1072,
+          "naive_event_to_source_row_join_pairs": 1072,
+          "type": "CreateEvent",
+          "unmatched_distinct_repository_ids": 5373,
+          "unmatched_events": 6923
+        },
+        {
+          "all_events": 3936,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 3936,
+          "matched_distinct_repository_ids": 552,
+          "matched_events": 944,
+          "naive_event_to_source_row_join_pairs": 944,
+          "type": "DeleteEvent",
+          "unmatched_distinct_repository_ids": 1400,
+          "unmatched_events": 2992
+        },
+        {
+          "all_events": 26,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 26,
+          "matched_distinct_repository_ids": 8,
+          "matched_events": 8,
+          "naive_event_to_source_row_join_pairs": 8,
+          "type": "DiscussionEvent",
+          "unmatched_distinct_repository_ids": 18,
+          "unmatched_events": 18
+        },
+        {
+          "all_events": 573,
+          "events_missing_or_invalid_repo_id": 2,
+          "events_with_valid_repo_id": 571,
+          "matched_distinct_repository_ids": 197,
+          "matched_events": 203,
+          "naive_event_to_source_row_join_pairs": 203,
+          "type": "ForkEvent",
+          "unmatched_distinct_repository_ids": 350,
+          "unmatched_events": 368
+        },
+        {
+          "all_events": 101,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 101,
+          "matched_distinct_repository_ids": 7,
+          "matched_events": 7,
+          "naive_event_to_source_row_join_pairs": 7,
+          "type": "GollumEvent",
+          "unmatched_distinct_repository_ids": 43,
+          "unmatched_events": 94
+        },
+        {
+          "all_events": 4466,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 4466,
+          "matched_distinct_repository_ids": 520,
+          "matched_events": 914,
+          "naive_event_to_source_row_join_pairs": 914,
+          "type": "IssueCommentEvent",
+          "unmatched_distinct_repository_ids": 1780,
+          "unmatched_events": 3552
+        },
+        {
+          "all_events": 3442,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 3442,
+          "matched_distinct_repository_ids": 263,
+          "matched_events": 625,
+          "naive_event_to_source_row_join_pairs": 625,
+          "type": "IssuesEvent",
+          "unmatched_distinct_repository_ids": 824,
+          "unmatched_events": 2817
+        },
+        {
+          "all_events": 108,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 108,
+          "matched_distinct_repository_ids": 4,
+          "matched_events": 4,
+          "naive_event_to_source_row_join_pairs": 4,
+          "type": "MemberEvent",
+          "unmatched_distinct_repository_ids": 92,
+          "unmatched_events": 104
+        },
+        {
+          "all_events": 68,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 68,
+          "matched_distinct_repository_ids": 0,
+          "matched_events": 0,
+          "naive_event_to_source_row_join_pairs": 0,
+          "type": "PublicEvent",
+          "unmatched_distinct_repository_ids": 68,
+          "unmatched_events": 68
+        },
+        {
+          "all_events": 11068,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 11068,
+          "matched_distinct_repository_ids": 1027,
+          "matched_events": 2185,
+          "naive_event_to_source_row_join_pairs": 2185,
+          "type": "PullRequestEvent",
+          "unmatched_distinct_repository_ids": 3926,
+          "unmatched_events": 8883
+        },
+        {
+          "all_events": 2084,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 2084,
+          "matched_distinct_repository_ids": 110,
+          "matched_events": 411,
+          "naive_event_to_source_row_join_pairs": 411,
+          "type": "PullRequestReviewCommentEvent",
+          "unmatched_distinct_repository_ids": 493,
+          "unmatched_events": 1673
+        },
+        {
+          "all_events": 2263,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 2263,
+          "matched_distinct_repository_ids": 308,
+          "matched_events": 610,
+          "naive_event_to_source_row_join_pairs": 610,
+          "type": "PullRequestReviewEvent",
+          "unmatched_distinct_repository_ids": 760,
+          "unmatched_events": 1653
+        },
+        {
+          "all_events": 103391,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 103391,
+          "matched_distinct_repository_ids": 15201,
+          "matched_events": 22260,
+          "naive_event_to_source_row_join_pairs": 22260,
+          "type": "PushEvent",
+          "unmatched_distinct_repository_ids": 39112,
+          "unmatched_events": 81131
+        },
+        {
+          "all_events": 972,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 972,
+          "matched_distinct_repository_ids": 183,
+          "matched_events": 205,
+          "naive_event_to_source_row_join_pairs": 205,
+          "type": "ReleaseEvent",
+          "unmatched_distinct_repository_ids": 594,
+          "unmatched_events": 767
+        },
+        {
+          "all_events": 3181,
+          "events_missing_or_invalid_repo_id": 0,
+          "events_with_valid_repo_id": 3181,
+          "matched_distinct_repository_ids": 1092,
+          "matched_events": 1269,
+          "naive_event_to_source_row_join_pairs": 1269,
+          "type": "WatchEvent",
+          "unmatched_distinct_repository_ids": 1513,
+          "unmatched_events": 1912
+        }
+      ],
+      "events_missing_or_invalid_repo_id": 2,
+      "events_total": 143769,
+      "events_with_valid_repo_id": 143767,
+      "hour_distinct_repository_ids": 63567,
+      "hour_repository_ids_matching_multiple_source_rows": 0,
+      "keyed_event_match_fraction": {
+        "denominator": 143767,
+        "numerator": 30738,
+        "share": 0.2138042805372582
+      },
+      "matched_account_linked_repository_rows": 17382,
+      "matched_distinct_repository_ids": 17382,
+      "matched_events": 30738,
+      "max_source_row_multiplicity_for_matched_id": 1,
+      "naive_event_to_source_row_join_pairs": 30738,
+      "source_account_linked_repository_rows_scanned": 53990808,
+      "source_row_multiplicity_histogram": [
+        {
+          "hour_distinct_repo_ids": 17382,
+          "source_account_linked_rows_per_repo_id": 1
+        }
+      ],
+      "source_rows_with_missing_or_invalid_repository_id": 0,
+      "unmatched_distinct_repository_ids": 46185,
+      "unmatched_events": 113029
+    },
+    "limitations": [
+      "An event actor is not necessarily the repository owner; no actor-to-owner equivalence is inferred",
+      "WatchEvents are event observations, not a complete or cumulative star history",
+      "Matching repository identifiers does not synchronize event times and stored star observations",
+      "A mismatch can reflect selection, forks, organization ownership, timing, deletion or other scope differences; it is not by itself a data error"
+    ],
+    "policies": {
+      "archive_schema": "GH Archive hourly JSONL, GitHub Events API schema used since 2015; positive integer repo.id is the join key",
+      "event_unit": "parsed JSON object record; event.id is not deduplicated",
+      "hour_selection": "fixed 2026-01-03 00:00 UTC interoperability demonstration; source collection-end/window alignment is not established",
+      "http_failure": "fail without switching hour; no partial result is published on transport/gzip integrity failure",
+      "join_key": "event.repo.id equals repositories.repository_id; local source row IDs are not cross-resource identifiers",
+      "memory": "one decompressed event line plus counters for distinct hour repository IDs/event types; never the archive or the entire source key corpus",
+      "missing_repo_ids": "counted separately and excluded only from the keyed-event match denominator",
+      "multiplicity": "each event counted once for membership; account-linked source multiplicity and naive event-row join pairs reported separately",
+      "raw_output": "no compressed/expanded archive, event rows, repository IDs/names, actors or account identifiers saved",
+      "source_population": "all source repositories rows, including rows linked to failed or unknown retrieval classes; no complete-cohort restriction"
+    },
+    "quality_evidence": {
+      "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+      "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+      "physical_checks": {
+        "duplicate_key_excess_rows": 0,
+        "invalid_stars": 0,
+        "orphan_repository_rows": 0
+      },
+      "quality_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+      "retrieval_classes": {
+        "complete": 3615479,
+        "failed": 56012,
+        "partial": 0,
+        "unknown": 6,
+        "unprocessed": 0
+      }
+    },
+    "source_scan": {
+      "covering_index_available": true,
+      "existing_index": "repositories_owner_repo_idx",
+      "per_archive_repository_sql_lookups": 0,
+      "query_plan": [
+        "SCAN repositories USING COVERING INDEX repositories_owner_repo_idx"
+      ],
+      "seconds": 38.23228554194793,
+      "source_scans": 1,
+      "sql": "SELECT repository_id FROM repositories INDEXED BY \"repositories_owner_repo_idx\""
+    }
+  }
+}

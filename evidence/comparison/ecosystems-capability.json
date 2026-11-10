@@ -1,0 +1,914 @@
+{
+  "accounts": [
+    {
+      "github_owner_id": 865944,
+      "zero_based_rank": 180773
+    },
+    {
+      "github_owner_id": 8147986,
+      "zero_based_rank": 542321
+    },
+    {
+      "github_owner_id": 26153211,
+      "zero_based_rank": 903869
+    },
+    {
+      "github_owner_id": 55682027,
+      "zero_based_rank": 1265417
+    },
+    {
+      "github_owner_id": 95195831,
+      "zero_based_rank": 1626965
+    },
+    {
+      "github_owner_id": 109348638,
+      "zero_based_rank": 1988513
+    },
+    {
+      "github_owner_id": 122242411,
+      "zero_based_rank": 2350061
+    },
+    {
+      "github_owner_id": 140714145,
+      "zero_based_rank": 2711609
+    },
+    {
+      "github_owner_id": 164500343,
+      "zero_based_rank": 3073157
+    },
+    {
+      "github_owner_id": 197917311,
+      "zero_based_rank": 3434705
+    }
+  ],
+  "contract_revision": "4e51f92e656dac574b5e0d45b21dabca1bc9dce7",
+  "empirical_coverage_comparison": false,
+  "ended_at_utc": "2026-11-06T21:48:11.533753+00:00",
+  "limitations": [
+    "Deterministic capability sample, not a population estimate",
+    "Complete is code-inferred, not independent rowset certification",
+    "Stored logins can be stale; 404 is not proof of missing owner data",
+    "Current API responses cannot validate unrecorded historical observation dates",
+    "Access failure is not evidence of competitor data absence"
+  ],
+  "primary_sources": [
+    {
+      "body_truncated": false,
+      "elapsed_seconds": 0.11699675000272691,
+      "ended_at_utc": "2026-11-06T21:48:10.689765+00:00",
+      "endpoint": "https://raw.githubusercontent.com/ecosyste-ms/repos/4e51f92e656dac574b5e0d45b21dabca1bc9dce7/openapi/api/v1/openapi.yaml",
+      "headers": {
+        "Content-Length": "39931",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:10 GMT"
+      },
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "39b1983b626a286fe317d2f8e741df9dd52747d786715274e842d1c9c47250fe",
+      "response_bytes": 39931,
+      "response_sha256": "50276688eb63673f6b7b7225d8187c03067a81824527ca536d18b3c26dc9a88b",
+      "saved_path": "sources/openapi/api/v1/openapi.yaml",
+      "source_path": "openapi/api/v1/openapi.yaml",
+      "started_at_utc": "2026-11-06T21:48:10.572760+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "elapsed_seconds": 0.09816704201512039,
+      "ended_at_utc": "2026-11-06T21:48:10.789043+00:00",
+      "endpoint": "https://raw.githubusercontent.com/ecosyste-ms/repos/4e51f92e656dac574b5e0d45b21dabca1bc9dce7/app/controllers/api/v1/owners_controller.rb",
+      "headers": {
+        "Content-Length": "2701",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:10 GMT"
+      },
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "f7fd33f3cbc061debcc79bf16f2bd6f04a01b2834df5923401d796354fce2f9a",
+      "response_bytes": 2701,
+      "response_sha256": "038ef206fe15ba9bef9dcde541e4408882a34c83a088ce1475a9eeeca1cfb277",
+      "saved_path": "sources/app/controllers/api/v1/owners_controller.rb",
+      "source_path": "app/controllers/api/v1/owners_controller.rb",
+      "started_at_utc": "2026-11-06T21:48:10.690860+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "elapsed_seconds": 0.2054237499833107,
+      "ended_at_utc": "2026-11-06T21:48:10.995733+00:00",
+      "endpoint": "https://raw.githubusercontent.com/ecosyste-ms/repos/4e51f92e656dac574b5e0d45b21dabca1bc9dce7/app/views/api/v1/owners/_owner.json.jbuilder",
+      "headers": {
+        "Content-Length": "394",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:10 GMT"
+      },
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "1d4badfd0e52305bfe969b047a274485aebb50005ffedcb4382e84af2f73ac9b",
+      "response_bytes": 394,
+      "response_sha256": "4b2a9a87d99183f85b4b99a89549dc9f7523ca4fc83492edcbcd46761722e9f3",
+      "saved_path": "sources/app/views/api/v1/owners/_owner.json.jbuilder",
+      "source_path": "app/views/api/v1/owners/_owner.json.jbuilder",
+      "started_at_utc": "2026-11-06T21:48:10.790296+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "elapsed_seconds": 0.09911199985072017,
+      "ended_at_utc": "2026-11-06T21:48:11.095601+00:00",
+      "endpoint": "https://raw.githubusercontent.com/ecosyste-ms/repos/4e51f92e656dac574b5e0d45b21dabca1bc9dce7/app/views/api/v1/repositories/_repository.json.jbuilder",
+      "headers": {
+        "Content-Length": "1198",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:11 GMT"
+      },
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "30883cace1f561f83fabe7956ff05be151734cf5bc41377079bf7abf87d4a2d5",
+      "response_bytes": 1198,
+      "response_sha256": "684c96dafa721232f3b71b1fa08f88e0df91b2cf6e49afc016b8ea357015f090",
+      "saved_path": "sources/app/views/api/v1/repositories/_repository.json.jbuilder",
+      "source_path": "app/views/api/v1/repositories/_repository.json.jbuilder",
+      "started_at_utc": "2026-11-06T21:48:10.996478+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "elapsed_seconds": 0.14185341587290168,
+      "ended_at_utc": "2026-11-06T21:48:11.238012+00:00",
+      "endpoint": "https://raw.githubusercontent.com/ecosyste-ms/repos/4e51f92e656dac574b5e0d45b21dabca1bc9dce7/app/models/owner.rb",
+      "headers": {
+        "Content-Length": "5003",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:11 GMT"
+      },
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "25b1d8ccd4c426ea609d8c2267b1ba347b28333bbed2ad65227443318bd5ad99",
+      "response_bytes": 5003,
+      "response_sha256": "cf58cdefe28b497e57e4509b29c646df8b2573e97c4a2d989000abb7a5595d32",
+      "saved_path": "sources/app/models/owner.rb",
+      "source_path": "app/models/owner.rb",
+      "started_at_utc": "2026-11-06T21:48:11.096147+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "elapsed_seconds": 0.28979187505319715,
+      "ended_at_utc": "2026-11-06T21:48:11.530994+00:00",
+      "endpoint": "https://raw.githubusercontent.com/ecosyste-ms/repos/4e51f92e656dac574b5e0d45b21dabca1bc9dce7/app/models/hosts/github.rb",
+      "headers": {
+        "Content-Length": "19365",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:11 GMT"
+      },
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "f30ebca8ec017f33e302595ee66711f3dd37104d8a4417fd672c50398d0a4ee7",
+      "response_bytes": 19365,
+      "response_sha256": "46f6ef97d807ffeb5e6c6c955c42baae83464988a4c17b615a46db6bb6ebbadb",
+      "saved_path": "sources/app/models/hosts/github.rb",
+      "source_path": "app/models/hosts/github.rb",
+      "started_at_utc": "2026-11-06T21:48:11.241181+00:00",
+      "status": 200,
+      "transport_error_type": null
+    }
+  ],
+  "provenance": {
+    "analysis_manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+    "database_access": "mode=ro&immutable=1; query_only=ON",
+    "helper_sha256": "79b3c9a8f61960cdde72c5732f4542b2658f6c68a7a6f0721d56f4eddbfec902",
+    "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+    "python": "3.12.1",
+    "release_manifest_sha256": "4f7b1b9b7bd7752429b54557fda6047f9216491be784cdca91a349fa29103eaf",
+    "script_sha256": "872ddcadaee4e0e795ecbc81b2391c8ea8ace796fa3a931eb827c5bc738b65d0",
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8"
+  },
+  "request_policy": {
+    "authentication": "none",
+    "headers": {
+      "Accept": "application/json",
+      "Accept-Encoding": "identity",
+      "User-Agent": "GitHub-Stars-in-Context-capability-comparison/1.0"
+    },
+    "max_account_requests": 20,
+    "pagination": "first page only, never follow links",
+    "per_response_byte_limit": 2097152,
+    "redirects": false,
+    "retries": 0,
+    "stop": "first access-denial/rate-limit, transport failure, redirect or truncated body",
+    "timeout_seconds": 30
+  },
+  "requests": [
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 6,
+          "full_name": 6,
+          "last_synced_at": 6,
+          "owner": 6,
+          "stargazers_count": 6,
+          "uuid": 6
+        },
+        "object_rows": 6,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 6
+      },
+      "elapsed_seconds": 0.6942667497787625,
+      "ended_at_utc": "2026-11-06T21:48:04.125282+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 865944,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:04 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "eb2e82a367fcb1515e5a9d182ef0efd84bece0768fcc57423f96dea1de351733",
+      "response_bytes": 10214,
+      "response_sha256": "768b45afbfb25ad1365a780d13c2b1907977087588b8acb9610fa690584ef62c",
+      "started_at_utc": "2026-11-06T21:48:03.430966+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.16201800014823675,
+      "ended_at_utc": "2026-11-06T21:48:04.287416+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 865944,
+      "headers": {
+        "Content-Length": "723",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:04 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "01c283c908f6787d7fa51b7cb43ead47b49860f271b22ffbdf59ac6a0b7e1fe9",
+      "response_bytes": 723,
+      "response_sha256": "5ce2ca799b2de11f0bd17e3906c653491a3bed6cab58c45ae63e550adbeeb880",
+      "started_at_utc": "2026-11-06T21:48:04.125389+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 7,
+          "full_name": 7,
+          "last_synced_at": 7,
+          "owner": 7,
+          "stargazers_count": 7,
+          "uuid": 7
+        },
+        "object_rows": 7,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 7
+      },
+      "elapsed_seconds": 0.36452141706831753,
+      "ended_at_utc": "2026-11-06T21:48:04.652066+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 8147986,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:04 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "c73e447807f4c3394f22df9109ed80f8ca5a77e948ff728e17e2fc8c1b35b2bb",
+      "response_bytes": 12711,
+      "response_sha256": "3a640add279568c98883d76cc6dc4fadc3954f88d1666132d709d0442eea13fc",
+      "started_at_utc": "2026-11-06T21:48:04.287530+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.16706224996596575,
+      "ended_at_utc": "2026-11-06T21:48:04.819275+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 8147986,
+      "headers": {
+        "Content-Length": "814",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:04 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "a12646ca3134c7905b81ab2f61401192ee5057fabe41555feb7419d517449469",
+      "response_bytes": 814,
+      "response_sha256": "ed36c8bba8054e0afac937f44ff75a727275f920c66b311fe1968fe410cc331d",
+      "started_at_utc": "2026-11-06T21:48:04.652204+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 19,
+          "full_name": 19,
+          "last_synced_at": 19,
+          "owner": 19,
+          "stargazers_count": 19,
+          "uuid": 19
+        },
+        "object_rows": 19,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 19
+      },
+      "elapsed_seconds": 0.9022795001510531,
+      "ended_at_utc": "2026-11-06T21:48:05.721626+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 26153211,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:05 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "7aa46cec60b56288b1d22a1e593573b63de74fdf0ae9c1098da496db603ccdca",
+      "response_bytes": 83076,
+      "response_sha256": "e143ab92ca93613ea6000a41e927aa7513afc3948b7e0c6d9e874f6f48ba9999",
+      "started_at_utc": "2026-11-06T21:48:04.819326+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.1776208751834929,
+      "ended_at_utc": "2026-11-06T21:48:05.902498+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 26153211,
+      "headers": {
+        "Content-Length": "793",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:05 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "48d56f142023220d7c173cc926b46c532952bf259d0c26090f8f0d94d8661ebb",
+      "response_bytes": 793,
+      "response_sha256": "63cfb6f04901e51c8f3bd13a176d617a11bd4b7a310d044257274e38003b48ba",
+      "started_at_utc": "2026-11-06T21:48:05.724864+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 20,
+          "full_name": 20,
+          "last_synced_at": 20,
+          "owner": 20,
+          "stargazers_count": 20,
+          "uuid": 20
+        },
+        "object_rows": 20,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 20
+      },
+      "elapsed_seconds": 0.6030421671457589,
+      "ended_at_utc": "2026-11-06T21:48:06.505626+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 55682027,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:06 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "6f701248f05ee57f9838e950b83e9e7be84492de365b513ec60ee05905c4c19d",
+      "response_bytes": 44604,
+      "response_sha256": "6d141b503a63d680a8aad43d7e57a95d53f9f2a8346b078d9404f775c600dc40",
+      "started_at_utc": "2026-11-06T21:48:05.902567+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.24193250015377998,
+      "ended_at_utc": "2026-11-06T21:48:06.747881+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 55682027,
+      "headers": {
+        "Content-Length": "786",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:06 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "10fac9b9a7ca7fd37c834604772187c651f7d1c2669b9f9e2f36b60df2fdc79c",
+      "response_bytes": 786,
+      "response_sha256": "8cc89984e63c9a8adcdce433946a581d231f13424532b0b3424184ca189f27ec",
+      "started_at_utc": "2026-11-06T21:48:06.505938+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 17,
+          "full_name": 17,
+          "last_synced_at": 17,
+          "owner": 17,
+          "stargazers_count": 17,
+          "uuid": 17
+        },
+        "object_rows": 17,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 17
+      },
+      "elapsed_seconds": 0.6005236250348389,
+      "ended_at_utc": "2026-11-06T21:48:07.348521+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 95195831,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:07 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "c0e22852c1e5aef61f997663b7a06e2fe9e001ff019e0c2dc6ac40153023849e",
+      "response_bytes": 31580,
+      "response_sha256": "adfe78a2d59dbed12abaee1e65867a0c49105def600eb2bc5ec3d0590220081e",
+      "started_at_utc": "2026-11-06T21:48:06.747981+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.18367979186587036,
+      "ended_at_utc": "2026-11-06T21:48:07.532464+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 95195831,
+      "headers": {
+        "Content-Length": "852",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:07 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "61a13b1dc812db9942a0f29f1608870dbf32ee7420fbfce60b941f46e17582b9",
+      "response_bytes": 852,
+      "response_sha256": "06fa9af69f5d848171948749a271a250c637a49986e9a1b88453ae094a0d0d57",
+      "started_at_utc": "2026-11-06T21:48:07.348774+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 2,
+          "full_name": 2,
+          "last_synced_at": 2,
+          "owner": 2,
+          "stargazers_count": 2,
+          "uuid": 2
+        },
+        "object_rows": 2,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 2
+      },
+      "elapsed_seconds": 0.26830445788800716,
+      "ended_at_utc": "2026-11-06T21:48:07.800849+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 109348638,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:07 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "499ae721a4a669ba4fc8bc5d97722876b506286b41dea9e8cd6acb94abeaa98a",
+      "response_bytes": 4456,
+      "response_sha256": "2e07253e5efcdb868138a8f0aa2adc49f4744216ed6fe2ea7208e97ecfef1de3",
+      "started_at_utc": "2026-11-06T21:48:07.532534+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.18491887487471104,
+      "ended_at_utc": "2026-11-06T21:48:07.986100+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 109348638,
+      "headers": {
+        "Content-Length": "776",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:07 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "c1774fb4532179f4823796fa3b43df879c5d7626843782e10e270e266957b263",
+      "response_bytes": 776,
+      "response_sha256": "1b0c1d4473433683c3c449d7103a686208aca6d4bbb8aa300acd80e81374465f",
+      "started_at_utc": "2026-11-06T21:48:07.801164+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 2,
+          "full_name": 2,
+          "last_synced_at": 2,
+          "owner": 2,
+          "stargazers_count": 2,
+          "uuid": 2
+        },
+        "object_rows": 2,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 2
+      },
+      "elapsed_seconds": 0.33921124995686114,
+      "ended_at_utc": "2026-11-06T21:48:08.325383+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 122242411,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:08 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "b4a05d88bab19165a0a3d5c38621072ea0db600b11291298410ff3c321cadc4b",
+      "response_bytes": 3583,
+      "response_sha256": "e5a27b32f7d6070a5d724ff741b02154bf4ded82cf02c9a8c887a2e8f240e63e",
+      "started_at_utc": "2026-11-06T21:48:07.986159+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.19962754100561142,
+      "ended_at_utc": "2026-11-06T21:48:08.525117+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 122242411,
+      "headers": {
+        "Content-Length": "733",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:08 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "d9ff29a8e8364286cfe3979625f1f5e51684f016b779969f16f2c17fec7c049a",
+      "response_bytes": 733,
+      "response_sha256": "ce8b42726ffdb3f87bab79559427a8dd2df642e17304bc0b5a436c096afced9a",
+      "started_at_utc": "2026-11-06T21:48:08.325480+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 11,
+          "full_name": 11,
+          "last_synced_at": 11,
+          "owner": 11,
+          "stargazers_count": 11,
+          "uuid": 11
+        },
+        "object_rows": 11,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 11
+      },
+      "elapsed_seconds": 0.6880702499765903,
+      "ended_at_utc": "2026-11-06T21:48:09.213268+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 140714145,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:09 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "b6793812623ee55eec2ef9274fab0f44ebc2fd85b4f63448b43036a8fbbe5a4e",
+      "response_bytes": 22922,
+      "response_sha256": "c4bf22f89430e8925a526e3c93a4ec45024828c4d74adeabff57c6ae47fa20b4",
+      "started_at_utc": "2026-11-06T21:48:08.525179+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.32739779190160334,
+      "ended_at_utc": "2026-11-06T21:48:09.541198+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 140714145,
+      "headers": {
+        "Content-Length": "704",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:09 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "2df5199aac19d1dbe785fb78f5d4fdf92fe9d5bd00f4dc0e19857d6ce42cbdbf",
+      "response_bytes": 704,
+      "response_sha256": "9cf3128fafd998bc73ead40e8506209472ebdefd96d94276bdc84f890ddb998e",
+      "started_at_utc": "2026-11-06T21:48:09.213785+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "first_page_only_not_coverage",
+        "expected_upstream_repository_total": "not_established_by_array_response",
+        "nonnull_field_counts": {
+          "fork": 9,
+          "full_name": 9,
+          "last_synced_at": 9,
+          "owner": 9,
+          "stargazers_count": 9,
+          "uuid": 9
+        },
+        "object_rows": 9,
+        "observation_timestamp": "last_synced_at_presence_only_not_common_observation_time",
+        "owner_enumeration_completion_flag": "not_established_by_array_response",
+        "portable_identifiers": "uuid_presence_only_mapping_requires_source_contract",
+        "returned_rows": 9
+      },
+      "elapsed_seconds": 0.3905368749983609,
+      "ended_at_utc": "2026-11-06T21:48:09.931806+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 164500343,
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:09 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": true,
+      "request_url_sha256": "68a298a0b797cef25f9a3eea42c209db16dca611732e1575899dda0768857012",
+      "response_bytes": 18210,
+      "response_sha256": "69d66b3b188b5cd3e3d9ba1ab40e4bcef72940dd1251db7a04dd52a25b24e0c8",
+      "started_at_utc": "2026-11-06T21:48:09.541256+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "owner_fields_not_completeness_proof",
+        "expected_upstream_repository_total": "repositories_count_is_local_index_count",
+        "nonnull_fields": {
+          "last_synced_at": true,
+          "repositories_count": true,
+          "uuid": true
+        },
+        "observation_timestamp": "last_synced_at_presence_only",
+        "owner_enumeration_completion_flag": "not_in_inspected_serializer",
+        "portable_identifiers": "uuid_presence_only"
+      },
+      "elapsed_seconds": 0.1633204580284655,
+      "ended_at_utc": "2026-11-06T21:48:10.095324+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 164500343,
+      "headers": {
+        "Content-Length": "696",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:10 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "a9fd0864a71f7129e2a2f664b66fd45c94f180e006432e425a6d67fe5389588a",
+      "response_bytes": 696,
+      "response_sha256": "9b293f931e141f5d18ae809970fc2fe8125def9a6020d7b0931f20fb9a56dba5",
+      "started_at_utc": "2026-11-06T21:48:09.931993+00:00",
+      "status": 200,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "unavailable",
+        "expected_upstream_repository_total": null,
+        "observation_timestamp": null,
+        "owner_enumeration_completion_flag": null,
+        "portable_identifiers": null
+      },
+      "elapsed_seconds": 0.1709842081181705,
+      "ended_at_utc": "2026-11-06T21:48:10.266377+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}/repositories?fork=false&per_page=100&page=1",
+      "github_owner_id": 197917311,
+      "headers": {
+        "Content-Length": "21",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:10 GMT"
+      },
+      "kind": "repositories",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "758e9020c1990c2ffc12c14c7ff9518af45cbe2c05fb2eb41393b9e0695143df",
+      "response_bytes": 21,
+      "response_sha256": "51d0a9e3bd9ffc25483790aaffe7a3597e642edd040dddb16aafc324e6e922ed",
+      "started_at_utc": "2026-11-06T21:48:10.095383+00:00",
+      "status": 404,
+      "transport_error_type": null
+    },
+    {
+      "body_truncated": false,
+      "capabilities": {
+        "assessment": "unavailable",
+        "expected_upstream_repository_total": null,
+        "observation_timestamp": null,
+        "owner_enumeration_completion_flag": null,
+        "portable_identifiers": null
+      },
+      "elapsed_seconds": 0.30613266583532095,
+      "ended_at_utc": "2026-11-06T21:48:10.572732+00:00",
+      "endpoint": "https://repos.ecosyste.ms/api/v1/hosts/GitHub/owners/{stored_login}",
+      "github_owner_id": 197917311,
+      "headers": {
+        "Content-Length": "21",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Fri, 06 Nov 2026 21:48:10 GMT"
+      },
+      "kind": "owner",
+      "method": "GET",
+      "pagination_link_present": false,
+      "request_url_sha256": "49220d1a0b61178130fff4a0919bf6ee30e955532368668a17eb668cebdc2e35",
+      "response_bytes": 21,
+      "response_sha256": "51d0a9e3bd9ffc25483790aaffe7a3597e642edd040dddb16aafc324e6e922ed",
+      "started_at_utc": "2026-11-06T21:48:10.266578+00:00",
+      "status": 404,
+      "transport_error_type": null
+    }
+  ],
+  "sampling": {
+    "cohort": "users.retrieval_status='complete'",
+    "cohort_accounts": 3615479,
+    "ordering": "github_id ASC, id ASC",
+    "selected_accounts": 10,
+    "selection": "ten equal-rank-stratum midpoints; no random sampling",
+    "zero_based_rank_formula": "floor((2*i+1)*N/20), i=0..9"
+  },
+  "started_at_utc": "2026-11-06T21:47:55.354537+00:00",
+  "stop_reason": "twenty_request_cap_reached",
+  "summary": {
+    "accounts_attempted": 10,
+    "actual_account_requests": 20,
+    "http_status_counts": {
+      "200": 18,
+      "404": 2
+    },
+    "primary_source_requests": 6
+  }
+}

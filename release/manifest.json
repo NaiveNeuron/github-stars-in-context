@@ -1,0 +1,69 @@
+{
+  "account_frame": {
+    "description": "TODO: verify follower/date partition configuration and discovery coverage against collector evidence",
+    "discovered_accounts": null,
+    "evidence_ref": null
+  },
+  "author_decisions": {
+    "code_license": "pending",
+    "data_license": "pending",
+    "restricted_profile_addon": "pending; default artifact excludes profile text and social-link URLs"
+  },
+  "classification_ledger": {
+    "basis": "Source sidecar overrides or revision-pinned code inference, persisted before private fields are removed",
+    "profile_availability": "profile_available",
+    "status": "retrieval_status",
+    "table": "users"
+  },
+  "code_license": null,
+  "collector_semantics": {
+    "classification_basis": "Code-inferred fetch outcome, not independent certification of current stored row-set completeness",
+    "empty_refresh_caveat": "update_user_repositories deletes obsolete rows only for a nonempty fetched list; a successful empty refresh can retain old rows",
+    "execution_history_caveat": "Provider identifies this collector; exact commands and logs still need confirmation",
+    "license_file_present": false,
+    "policy_id": "git-h-index-fe2d7196-v1",
+    "repository": "https://github.com/Pavloffm/git-h-index",
+    "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+    "source_file_sha256": {
+      "config.py": "395feea85c2bc1ca64eddc6942c8c8e7bdb52bf5f1edc3fc648833d888e422ef",
+      "data_fetching/github_parser.py": "5e11db0afccf4e48bb9ec922ee59f1b283361ebc5eab116ef5ced035bb3016e8",
+      "data_fetching/main.py": "5fbf439f342c33247cd2d9fa274d2746da5943b2f2fad5ffa8a6fcc7c90f6d72",
+      "data_fetching/users_fetching/fetch_user_links.py": "d23999eb87985b6b444431a9585917aae6b905b8ffb6dc715c6463235feb7a98",
+      "data_fetching/users_fetching/fetch_user_profile.py": "1efce9b500f5a581f73e0603ce25e0c751c260b5b7733218c6cf1872ca8aea5b",
+      "data_fetching/users_fetching/popular_users.py": "a4ca76eeb6c5338f648a398ff0dfe72db8b69782863fe7b22cb142fcedbdbe73",
+      "data_storage/database.py": "ed5ca3e99ce6826cea7ef679a609ef2a0dc3dde3f8e1e913c90d28425869e3b3"
+    }
+  },
+  "data_kind": "research",
+  "data_license": null,
+  "doi": null,
+  "observation_window": {
+    "end": null,
+    "evidence_ref": null,
+    "start": null
+  },
+  "release_scope": "All selected account records and their stored repository rows; profile text and user_links excluded",
+  "retrieval_evidence_csv": null,
+  "retrieval_policy": "Use persisted users.retrieval_status and profile_available from the source classification ledger",
+  "reviewer_url": null,
+  "sampling": {
+    "account_fraction": 1.0,
+    "caveat": "Account sampling, not repository sampling. Portfolio-size heavy tails can make size extrapolation unstable",
+    "method": "all accounts",
+    "python": "3.12.1",
+    "requested_fraction": 1.0,
+    "seed": 20261106,
+    "selected_accounts": 3671497,
+    "selected_ids_sha256": null,
+    "source_accounts": 3671497
+  },
+  "timestamp_semantics": {
+    "repositories.created_at": "GitHub repository createdAt retained on insertion, not fetch time (github_parser.py:30-34; database.py:94-105)",
+    "user_links.created_at": "Link-row timestamp; collector write path must be cited, not repository observation time",
+    "users.created_at": "Discovery insertion datetime.now(), not GitHub registration (popular_users.py:168-176)",
+    "users.last_updated": "Overloaded: user refresh/profile-enrichment time or failure sentinel, with parse_all reset; not repository observation time (database.py:41-67,243-252; fetch_user_profile.py:115-145; main.py:89-99)",
+    "users.links_parsed_at": "Link parsing stage timestamp; not repository observation time (database.py link parsing writers)"
+  },
+  "validation_csv": null,
+  "version": null
+}

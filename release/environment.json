@@ -1,0 +1,358 @@
+{
+  "captured_at_utc": "2026-11-06T21:50:55.469689+00:00",
+  "files": {
+    "requirements-parquet.lock": {
+      "bytes": 5889,
+      "sha256": "6c11422467706214e9994a27b06ec5efb8064795992d6eadc4dce5f95e2cc792"
+    },
+    "requirements.lock": {
+      "bytes": 47529,
+      "sha256": "3fac4f2b027e6dea13f9542389321ff714655350ee6c1f9c2bfac49d55da06ab"
+    },
+    "requirements.txt": {
+      "bytes": 178,
+      "sha256": "60c07a1903311fcc54070c079b7e00947cd29c57e4b016a2aebadb97dbe2326e"
+    }
+  },
+  "install": {
+    "command": "uv pip sync --python <reviewer-venv-python> --require-hashes --only-binary :all: requirements.lock",
+    "environment": "Create a fresh virtual environment with CPython 3.12.1",
+    "interpreter_placeholder": "<reviewer-venv-python> is that environment interpreter, not a machine-specific path",
+    "python_version": "3.12.1"
+  },
+  "lock": {
+    "artifact_source": "https://pypi.org/simple",
+    "direct_package_count": 4,
+    "format": "pip requirements with SHA256 hashes",
+    "hash_scope": "Published distribution artifacts for each pinned version; binary-wheel installation is required by the recipe",
+    "package_count": 13,
+    "path": "requirements.lock",
+    "runtime_scope": "Python, SQLite and the tested platform are recorded separately from the Python package lock",
+    "transitive_package_count": 9,
+    "version_policy": "Freeze all installed versions, including transitives; do not resolve new dependency versions"
+  },
+  "packages": [
+    {
+      "allowed_artifact_sha256_count": 70,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "1237b876596ef221ae4a5e23c1f8d3e526505e52a15f480ad4f4760f0a729791",
+      "name": "contourpy",
+      "requires_dist": [
+        "numpy>=2.0",
+        "myst-parser; extra == \"docs\"",
+        "sphinx; extra == \"docs\"",
+        "sphinx-book-theme; extra == \"docs\"",
+        "sphinx-copybutton; extra == \"docs\"",
+        "bokeh; extra == \"bokeh\"",
+        "selenium; extra == \"bokeh\"",
+        "contourpy[bokeh,docs]; extra == \"mypy\"",
+        "bokeh; extra == \"mypy\"",
+        "docutils-stubs; extra == \"mypy\"",
+        "mypy==2.1.0; extra == \"mypy\"",
+        "types-Pillow; extra == \"mypy\"",
+        "contourpy[test-no-images]; extra == \"test\"",
+        "matplotlib; extra == \"test\"",
+        "pre-commit; extra == \"test\"",
+        "Pillow; extra == \"test\"",
+        "pytest; extra == \"test-no-images\"",
+        "pytest-cov; extra == \"test-no-images\"",
+        "pytest-rerunfailures<16; extra == \"test-no-images\"",
+        "pytest-xdist; extra == \"test-no-images\"",
+        "wurlitzer; extra == \"test-no-images\""
+      ],
+      "version": "1.4.0"
+    },
+    {
+      "allowed_artifact_sha256_count": 2,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "cbcbee5f18d75bd4935199b135aa33c3ed62df14991110a35c428883798d7979",
+      "name": "cycler",
+      "requires_dist": [
+        "ipython ; extra == 'docs'",
+        "matplotlib ; extra == 'docs'",
+        "numpydoc ; extra == 'docs'",
+        "sphinx ; extra == 'docs'",
+        "pytest ; extra == 'tests'",
+        "pytest-cov ; extra == 'tests'",
+        "pytest-xdist ; extra == 'tests'"
+      ],
+      "version": "0.12.1"
+    },
+    {
+      "allowed_artifact_sha256_count": 15,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": true,
+      "installed_record_sha256": "4809ded2d4d1a381cba028d18f9c2ba4bef6d771192cbdb5d4e61868c96db69f",
+      "name": "duckdb",
+      "requires_dist": [
+        "ipython; extra == \"all\"",
+        "fsspec; extra == \"all\"",
+        "numpy; extra == \"all\"",
+        "pandas; extra == \"all\"",
+        "pyarrow; extra == \"all\"",
+        "adbc-driver-manager; extra == \"all\""
+      ],
+      "version": "2.0.0"
+    },
+    {
+      "allowed_artifact_sha256_count": 65,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "49b31d806380cd53acfbb08b887180bf3b05e273c15970a10091ff7b5b177ee8",
+      "name": "fonttools",
+      "requires_dist": [
+        "lxml>=4.0; extra == \"lxml\"",
+        "brotli>=1.2.1; platform_python_implementation == \"CPython\" and extra == \"woff\"",
+        "brotlicffi>=1.2.1.0; platform_python_implementation != \"CPython\" and extra == \"woff\"",
+        "zopfli>=0.1.4; extra == \"woff\"",
+        "unicodedata2>=18.0.0; python_version <= \"3.15\" and extra == \"unicode\"",
+        "lz4>=1.7.4.2; extra == \"graphite\"",
+        "scipy; platform_python_implementation != \"PyPy\" and extra == \"interpolatable\"",
+        "munkres; platform_python_implementation == \"PyPy\" and extra == \"interpolatable\"",
+        "pycairo; extra == \"interpolatable\"",
+        "matplotlib; extra == \"plot\"",
+        "sympy; extra == \"symfont\"",
+        "xattr; sys_platform == \"darwin\" and extra == \"type1\"",
+        "skia-pathops>=0.5.0; extra == \"pathops\"",
+        "uharfbuzz>=0.45.0; extra == \"repacker\"",
+        "lxml>=4.0; extra == \"all\"",
+        "brotli>=1.2.1; platform_python_implementation == \"CPython\" and extra == \"all\"",
+        "brotlicffi>=1.2.1.0; platform_python_implementation != \"CPython\" and extra == \"all\"",
+        "zopfli>=0.1.4; extra == \"all\"",
+        "unicodedata2>=18.0.0; python_version <= \"3.15\" and extra == \"all\"",
+        "lz4>=1.7.4.2; extra == \"all\"",
+        "scipy; platform_python_implementation != \"PyPy\" and extra == \"all\"",
+        "munkres; platform_python_implementation == \"PyPy\" and extra == \"all\"",
+        "pycairo; extra == \"all\"",
+        "matplotlib; extra == \"all\"",
+        "sympy; extra == \"all\"",
+        "xattr; sys_platform == \"darwin\" and extra == \"all\"",
+        "skia-pathops>=0.5.0; extra == \"all\"",
+        "uharfbuzz>=0.45.0; extra == \"all\""
+      ],
+      "version": "4.68.0"
+    },
+    {
+      "allowed_artifact_sha256_count": 141,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "0bc366d714ba47dafd947d80576cbc7ea8007dab54e7e1500c75cf4f8efd1b03",
+      "name": "kiwisolver",
+      "requires_dist": [],
+      "version": "1.5.1"
+    },
+    {
+      "allowed_artifact_sha256_count": 53,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": true,
+      "installed_record_sha256": "3c4ede6ad4ccbdbb55955c225c771432e24462f5c0b73c4ebfaaf2a4506859d2",
+      "name": "matplotlib",
+      "requires_dist": [
+        "contourpy>=1.0.1",
+        "cycler>=0.10",
+        "fonttools>=4.28.2",
+        "kiwisolver>=1.3.1",
+        "numpy>=1.25",
+        "packaging>=20.0",
+        "pillow>=9",
+        "pyparsing>=3",
+        "python-dateutil>=2.7"
+      ],
+      "version": "3.11.2"
+    },
+    {
+      "allowed_artifact_sha256_count": 66,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": true,
+      "installed_record_sha256": "3b35c9644e2f7f1b3ac374d2212a37f3a27af74de6459349533f533c50bf7930",
+      "name": "numpy",
+      "requires_dist": [],
+      "version": "2.5.4"
+    },
+    {
+      "allowed_artifact_sha256_count": 2,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+      "name": "packaging",
+      "requires_dist": [],
+      "version": "26.3"
+    },
+    {
+      "allowed_artifact_sha256_count": 83,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "f96700e5abcbfc2390cc52bb036e33ebd9cd5f19483b8199bfee0c325786e239",
+      "name": "pillow",
+      "requires_dist": [
+        "furo; extra == \"docs\"",
+        "olefile; extra == \"docs\"",
+        "sphinx>=8.2; extra == \"docs\"",
+        "sphinx-autobuild; extra == \"docs\"",
+        "sphinx-copybutton; extra == \"docs\"",
+        "sphinx-inline-tabs; extra == \"docs\"",
+        "sphinxext-opengraph; extra == \"docs\"",
+        "olefile; extra == \"fpx\"",
+        "olefile; extra == \"mic\"",
+        "arro3-compute; extra == \"test-arrow\"",
+        "arro3-core; extra == \"test-arrow\"",
+        "nanoarrow; extra == \"test-arrow\"",
+        "pyarrow; extra == \"test-arrow\"",
+        "coverage>=7.4.2; extra == \"tests\"",
+        "defusedxml; extra == \"tests\"",
+        "markdown2; extra == \"tests\"",
+        "olefile; extra == \"tests\"",
+        "packaging; extra == \"tests\"",
+        "psutil; (sys_platform == \"linux\" or sys_platform == \"darwin\") and extra == \"tests\"",
+        "pytest; extra == \"tests\"",
+        "pytest-cov; extra == \"tests\"",
+        "pytest-timeout; extra == \"tests\"",
+        "pytest-xdist; extra == \"tests\"",
+        "setuptools; extra == \"tests\"",
+        "trove-classifiers>=2024.10.12; extra == \"tests\"",
+        "defusedxml; extra == \"xmp\""
+      ],
+      "version": "13.0.0"
+    },
+    {
+      "allowed_artifact_sha256_count": 50,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": true,
+      "installed_record_sha256": "ce90d9ebe4b6e6077094a713595945f643e6d70d5e32b02ef1c052475c11504b",
+      "name": "pyarrow",
+      "requires_dist": [],
+      "version": "23.0.1"
+    },
+    {
+      "allowed_artifact_sha256_count": 2,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "dbc82867d6a4a3b935f9a9f3f2c876e3056dfffb104e1c8b3a3117d90aa21ad3",
+      "name": "pyparsing",
+      "requires_dist": [
+        "railroad-diagrams ; extra == \"diagrams\"",
+        "jinja2 ; extra == \"diagrams\""
+      ],
+      "version": "3.3.3"
+    },
+    {
+      "allowed_artifact_sha256_count": 2,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "8eb8af9b580133411716fcc5be769bb547e537bc127a4a6ebf2d92e182e80cfd",
+      "name": "python-dateutil",
+      "requires_dist": [
+        "tzdata"
+      ],
+      "version": "4.0.0"
+    },
+    {
+      "allowed_artifact_sha256_count": 2,
+      "artifact_hashes_file": "requirements.lock",
+      "direct_requirement": false,
+      "installed_record_sha256": "7264b3a15cf0a62ca4fe8429e35ae78fe380d58878647cefc95c42f19210ad1e",
+      "name": "tzdata",
+      "requires_dist": [],
+      "version": "2026.6"
+    }
+  ],
+  "parquet_fast_path": {
+    "default_extras": [],
+    "dependency_metadata_checks": [
+      {
+        "active_without_extras": false,
+        "package": "duckdb",
+        "requires_dist": "ipython; extra == \"all\""
+      },
+      {
+        "active_without_extras": false,
+        "package": "duckdb",
+        "requires_dist": "fsspec; extra == \"all\""
+      },
+      {
+        "active_without_extras": false,
+        "package": "duckdb",
+        "requires_dist": "numpy; extra == \"all\""
+      },
+      {
+        "active_without_extras": false,
+        "package": "duckdb",
+        "requires_dist": "pandas; extra == \"all\""
+      },
+      {
+        "active_without_extras": false,
+        "package": "duckdb",
+        "requires_dist": "pyarrow; extra == \"all\""
+      },
+      {
+        "active_without_extras": false,
+        "package": "duckdb",
+        "requires_dist": "adbc-driver-manager; extra == \"all\""
+      }
+    ],
+    "install_command": "uv pip sync --python <reviewer-venv-python> --require-hashes --only-binary :all: requirements-parquet.lock",
+    "minimal_environment_runtime_test": "Not performed by this environment-capture task",
+    "package_count": 2,
+    "packages": [
+      {
+        "allowed_artifact_sha256_count": 15,
+        "name": "duckdb",
+        "version": "2.0.0"
+      },
+      {
+        "allowed_artifact_sha256_count": 50,
+        "name": "pyarrow",
+        "version": "23.0.1"
+      }
+    ],
+    "path": "requirements-parquet.lock",
+    "purpose": "Parquet-only reviewer commands; full source analyses and figures use requirements.lock",
+    "regenerate_commands": [
+      "printf \"duckdb==2.0.0\\npyarrow==23.0.1\\n\" > parquet-environment.in",
+      "uv pip compile parquet-environment.in --python-version 3.12.1 --universal --generate-hashes --no-header --no-annotate --no-sources --default-index https://pypi.org/simple --output-file requirements-parquet.lock"
+    ],
+    "relationship_to_full_environment": "These exact distributions and hashes are a subset of the tested 13-package environment",
+    "resolver_check": "Universal uv resolution from both exact pins returned only duckdb and pyarrow"
+  },
+  "regenerate_lock": {
+    "commands": [
+      "uv pip freeze --python <tested-venv-python> > installed-environment.in",
+      "uv pip compile installed-environment.in --python-version 3.12.1 --universal --no-deps --generate-hashes --no-header --no-annotate --no-sources --default-index https://pypi.org/simple --output-file requirements.lock"
+    ],
+    "header": "The committed lock adds a comment header describing the tested environment and installation command",
+    "interpreter_placeholder": "<tested-venv-python> is the interpreter from the environment being captured"
+  },
+  "runtime": {
+    "implementation": "CPython",
+    "python_abi": "cpython-312-darwin",
+    "python_version": "3.12.1",
+    "python_version_detail": "3.12.1 (main, Jan  7 2024, 23:31:12) [Clang 16.0.3 ]",
+    "sqlite_provider": "sqlite3 extension bundled with this Python interpreter",
+    "sqlite_version": "3.44.2"
+  },
+  "schema_version": 1,
+  "scope": "Exact installed Python distributions used in the tested local environment",
+  "tested_platform": {
+    "kernel_release": "24.6.0",
+    "machine": "arm64",
+    "macos_version": "15.8.1",
+    "python_platform_tag": "macosx-11.0-arm64",
+    "system": "Darwin"
+  },
+  "tool": {
+    "name": "uv",
+    "version": "0.11.10"
+  },
+  "validation": {
+    "dependency_check": "uv pip check: all 13 installed packages compatible",
+    "direct_requirements_match_installed": true,
+    "environment_mutated": false,
+    "fast_path_default_dependency_closure_checked": true,
+    "fast_path_exact_subset": true,
+    "hash_required_sync_dry_run": "Would make no changes",
+    "installed_record_sha256_meaning": "Digest of each installed wheel RECORD manifest, not a substitute for the distribution artifact hashes in requirements.lock",
+    "installed_versions_match_lock": true
+  }
+}

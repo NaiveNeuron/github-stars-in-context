@@ -1,0 +1,343 @@
+{
+  "provenance": {
+    "analysis_brief_sha256": "3f607b9da53b33c71b761eb5e2d5b9d661a51df669d1a5dbb12611e84e492307",
+    "analysis_population": "code-inferred complete account portfolios",
+    "analysis_scripts_sha256": {
+      "examples/03_thresholds.py": "c7df7b1d589d02f91cb09fd96c7868674215691dd2b3c90f460d3d0e520b0e31",
+      "examples/04_portfolios.py": "b2eaee2a3c8947e8e833dd46c723b5248dc36399e91d970970c8aafb61b9f151"
+    },
+    "checksum_matches_expected": true,
+    "code_hashes_captured_at": "2026-11-05T23:06:46.325638+00:00",
+    "collector_semantics": {
+      "active": true,
+      "classification_basis": "explicit sidecar overrides, otherwise pinned collector code inference",
+      "classification_columns_available": true,
+      "limitations": [
+        "Classes are inferred from the pinned collector state machine, not independent proof of the stored repository rowset",
+        "An empty successful refresh can retain older rows because deletion runs only when seen_repo_ids is nonempty (database.py:115-120)",
+        "last_updated is shared by discovery, profile and link stages and by sentinels; it is not a repository retrieval timestamp",
+        "An all-default empty profile can represent either a failed profile request or a genuine empty profile; masking is conservative"
+      ],
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "profile_signature_columns_available": true,
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "rowset_completeness_independently_certified": false
+    },
+    "common_sha256": "ac43b72b7a66d6e629b09defaecda890f0b938f2b9e944d39e3eb9e12a6aa4a1",
+    "data_kind": "research",
+    "database_access": {
+      "cache_kib": 65536,
+      "immutable": true,
+      "mode": "ro",
+      "query_only": true,
+      "temp_store": "MEMORY"
+    },
+    "elapsed_seconds": 71.84789120801724,
+    "expected_input_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8",
+    "generated_at": "2026-11-05T23:07:58.172795+00:00",
+    "independent_rowset_certification": false,
+    "input_bytes": 9408057344,
+    "input_name": "github_hindex.db",
+    "input_role": "unreleased_source",
+    "input_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8",
+    "manifest_sha256": "4cee92b3afda44e8bcb83e9bd87e417f244e2444670be3a11d14f0778597a6b4",
+    "manuscript_results_allowed": false,
+    "prerequisite_quality_sha256": "dbe980042cbd3af1db7158fa89808d6973c82a16339fce2972c3bb1cfc61d057",
+    "python": "3.12.1",
+    "release_version": null,
+    "reuse_stream_sha256": "1c96c041959cfa2a74c6ab795a1d43f52259d61cd01382e719a19d1d36094cab",
+    "script": "run_reuse.py",
+    "script_path": "[provider-local-path-omitted]",
+    "script_sha256": "7df1c1bd75c5e785a3130dd48c1d473e4e7cdd69a1a9a5655ba65960b5990ac6",
+    "sidecar_sha256": {},
+    "source_audit": true,
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8"
+  },
+  "results": {
+    "baseline": {
+      "account_linked_repository_rows": 53987867,
+      "accounts": 3615479,
+      "stars": 239997596
+    },
+    "collector_semantics": {
+      "classification_basis": "Code-inferred fetch outcome, not independent certification of current stored row-set completeness",
+      "empty_refresh_caveat": "update_user_repositories deletes obsolete rows only for a nonempty fetched list; a successful empty refresh can retain old rows",
+      "execution_history_caveat": "Provider identifies this collector; exact commands and logs still need confirmation",
+      "license_file_present": false,
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "repository": "https://github.com/Pavloffm/git-h-index",
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "source_file_sha256": {
+        "config.py": "395feea85c2bc1ca64eddc6942c8c8e7bdb52bf5f1edc3fc648833d888e422ef",
+        "data_fetching/github_parser.py": "5e11db0afccf4e48bb9ec922ee59f1b283361ebc5eab116ef5ced035bb3016e8",
+        "data_fetching/main.py": "5fbf439f342c33247cd2d9fa274d2746da5943b2f2fad5ffa8a6fcc7c90f6d72",
+        "data_fetching/users_fetching/fetch_user_links.py": "d23999eb87985b6b444431a9585917aae6b905b8ffb6dc715c6463235feb7a98",
+        "data_fetching/users_fetching/fetch_user_profile.py": "1efce9b500f5a581f73e0603ce25e0c751c260b5b7733218c6cf1872ca8aea5b",
+        "data_fetching/users_fetching/popular_users.py": "a4ca76eeb6c5338f648a398ff0dfe72db8b69782863fe7b22cb142fcedbdbe73",
+        "data_storage/database.py": "ed5ca3e99ce6826cea7ef679a609ef2a0dc3dde3f8e1e913c90d28425869e3b3"
+      }
+    },
+    "figure_files": [
+      {
+        "bytes": 23298,
+        "path": "r1-thresholds.pdf",
+        "sha256": "6c25ef9fc18a8df99aac2f266d076ca2321bb2f3a5f2ef82abd69a4996f55f13"
+      },
+      {
+        "bytes": 76743,
+        "path": "r1-thresholds.png",
+        "sha256": "6375de9cd732ff33379620888f03958b57b61f766f0103d30750914dba76733a"
+      }
+    ],
+    "input_account_records_by_retrieval_class": {
+      "complete": 3615479,
+      "failed": 56012,
+      "unknown": 6
+    },
+    "parameters": {
+      "macro_medians": false,
+      "thresholds": [
+        1,
+        10,
+        100,
+        1000
+      ]
+    },
+    "plot": {
+      "conditional_weighting": "micro; macro results are saved in JSON",
+      "files": [
+        {
+          "bytes": 23298,
+          "path": "r1-thresholds.pdf",
+          "sha256": "6c25ef9fc18a8df99aac2f266d076ca2321bb2f3a5f2ef82abd69a4996f55f13"
+        },
+        {
+          "bytes": 76743,
+          "path": "r1-thresholds.png",
+          "sha256": "6375de9cd732ff33379620888f03958b57b61f766f0103d30750914dba76733a"
+        }
+      ],
+      "panels": [
+        "retained shares of the complete-class baseline",
+        "conditional hidden shares among retained owners"
+      ]
+    },
+    "policies": {
+      "baseline_accounts": "Includes empty and nonempty zero-star portfolios",
+      "completeness": "Complete means code-inferred fetch completion, not independent stored-rowset certification",
+      "conditional_macro": "Equal owner weights: arithmetic mean and optional median of each retained owner hidden-row or hidden-star fraction",
+      "conditional_micro": "Among owners retaining at least one row: sum hidden rows or stars divided by sum baseline rows or stars for those owners",
+      "empty_refresh": "The pinned collector can retain older rows after an empty refresh because stale-row deletion requires nonempty seen_repo_ids",
+      "identifiers": "No names or individual account records saved in this evidence",
+      "owner_retention": "At least one account-linked repository row reaches the threshold",
+      "population": "Account records classified complete under the revision-pinned collector policy; all observed portfolio rows retained",
+      "repository_unit": "Account-linked repository rows; the same GitHub repository ID under multiple accounts is counted once per stored ownership row",
+      "sampling_scope": "Follower-selected public non-fork repository population in the supplied snapshot, not all GitHub accounts",
+      "star_unit": "Star totals summed over account-linked repository rows in the stated population",
+      "threshold": "Retain each account-linked repository row with stars >= threshold, including exact equality",
+      "zero_denominators": "Shares and macro summaries are null when no relevant population exists"
+    },
+    "quality_evidence": {
+      "input_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8",
+      "manifest_sha256": "4cee92b3afda44e8bcb83e9bd87e417f244e2444670be3a11d14f0778597a6b4",
+      "physical_checks": {
+        "duplicate_key_excess_rows": 0,
+        "invalid_stars": 0,
+        "orphan_repository_rows": 0
+      },
+      "quality_sha256": "dbe980042cbd3af1db7158fa89808d6973c82a16339fce2972c3bb1cfc61d057",
+      "retrieval_classes": {
+        "complete": 3615479,
+        "failed": 56012,
+        "partial": 0,
+        "unknown": 6,
+        "unprocessed": 0
+      }
+    },
+    "shared_stream": {
+      "account_linked_repository_rows": 53990808,
+      "accounts": 3671497,
+      "data_pass_seconds": 65.43272191588767,
+      "h_stored_mismatches": 0,
+      "retrieval_class_counts": {
+        "complete": 3615479,
+        "failed": 56012,
+        "unknown": 6
+      }
+    },
+    "thresholds": [
+      {
+        "conditional_on_retained_owner": {
+          "accounts": 1983676,
+          "baseline_account_linked_repository_rows": 42256694,
+          "baseline_stars": 239997596,
+          "hidden_account_linked_repository_rows": {
+            "denominator": 42256694,
+            "numerator": 29721738,
+            "share": 0.7033616496359133
+          },
+          "hidden_stars": {
+            "denominator": 239997596,
+            "numerator": 0,
+            "share": 0.0
+          },
+          "macro": {
+            "accounts": 1983676,
+            "mean_hidden_repository_fraction": 0.6172130304858503,
+            "mean_hidden_star_fraction": 0.0,
+            "median_hidden_repository_fraction": null,
+            "median_hidden_star_fraction": null,
+            "median_status": "not_requested"
+          }
+        },
+        "retained": {
+          "account_linked_repository_rows": {
+            "denominator": 53987867,
+            "numerator": 12534956,
+            "share": 0.23218098244185123
+          },
+          "accounts": {
+            "denominator": 3615479,
+            "numerator": 1983676,
+            "share": 0.5486620168447943
+          },
+          "stars": {
+            "denominator": 239997596,
+            "numerator": 239997596,
+            "share": 1.0
+          }
+        },
+        "threshold": 1
+      },
+      {
+        "conditional_on_retained_owner": {
+          "accounts": 547003,
+          "baseline_account_linked_repository_rows": 13584681,
+          "baseline_stars": 229308087,
+          "hidden_account_linked_repository_rows": {
+            "denominator": 13584681,
+            "numerator": 12023883,
+            "share": 0.8851060249408874
+          },
+          "hidden_stars": {
+            "denominator": 229308087,
+            "numerator": 11779239,
+            "share": 0.05136861570869936
+          },
+          "macro": {
+            "accounts": 547003,
+            "mean_hidden_repository_fraction": 0.7890410431769037,
+            "mean_hidden_star_fraction": 0.2137754016642493,
+            "median_hidden_repository_fraction": null,
+            "median_hidden_star_fraction": null,
+            "median_status": "not_requested"
+          }
+        },
+        "retained": {
+          "account_linked_repository_rows": {
+            "denominator": 53987867,
+            "numerator": 1560798,
+            "share": 0.028910162351848425
+          },
+          "accounts": {
+            "denominator": 3615479,
+            "numerator": 547003,
+            "share": 0.15129475236891157
+          },
+          "stars": {
+            "denominator": 239997596,
+            "numerator": 217528848,
+            "share": 0.9063792788991103
+          }
+        },
+        "threshold": 10
+      },
+      {
+        "conditional_on_retained_owner": {
+          "accounts": 154387,
+          "baseline_account_linked_repository_rows": 4177902,
+          "baseline_stars": 201800785,
+          "hidden_account_linked_repository_rows": {
+            "denominator": 4177902,
+            "numerator": 3908586,
+            "share": 0.9355379805462167
+          },
+          "hidden_stars": {
+            "denominator": 201800785,
+            "numerator": 20812578,
+            "share": 0.10313427670759556
+          },
+          "macro": {
+            "accounts": 154387,
+            "mean_hidden_repository_fraction": 0.8433933794014461,
+            "mean_hidden_star_fraction": 0.19809824062119938,
+            "median_hidden_repository_fraction": null,
+            "median_hidden_star_fraction": null,
+            "median_status": "not_requested"
+          }
+        },
+        "retained": {
+          "account_linked_repository_rows": {
+            "denominator": 53987867,
+            "numerator": 269316,
+            "share": 0.004988454165081202
+          },
+          "accounts": {
+            "denominator": 3615479,
+            "numerator": 154387,
+            "share": 0.0427016724478278
+          },
+          "stars": {
+            "denominator": 239997596,
+            "numerator": 180988207,
+            "share": 0.7541250829862479
+          }
+        },
+        "threshold": 100
+      },
+      {
+        "conditional_on_retained_owner": {
+          "accounts": 23443,
+          "baseline_account_linked_repository_rows": 776562,
+          "baseline_stars": 136212510,
+          "hidden_account_linked_repository_rows": {
+            "denominator": 776562,
+            "numerator": 745506,
+            "share": 0.9600083444721735
+          },
+          "hidden_stars": {
+            "denominator": 136212510,
+            "numerator": 21327922,
+            "share": 0.15657829078988414
+          },
+          "macro": {
+            "accounts": 23443,
+            "mean_hidden_repository_fraction": 0.878431569395135,
+            "mean_hidden_star_fraction": 0.1801333800167073,
+            "median_hidden_repository_fraction": null,
+            "median_hidden_star_fraction": null,
+            "median_status": "not_requested"
+          }
+        },
+        "retained": {
+          "account_linked_repository_rows": {
+            "denominator": 53987867,
+            "numerator": 31056,
+            "share": 0.0005752403590977209
+          },
+          "accounts": {
+            "denominator": 3615479,
+            "numerator": 23443,
+            "share": 0.006484064767075123
+          },
+          "stars": {
+            "denominator": 239997596,
+            "numerator": 114884588,
+            "share": 0.47869057821729183
+          }
+        },
+        "threshold": 1000
+      }
+    ]
+  }
+}

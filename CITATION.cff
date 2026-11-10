@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset, please cite it as below."
+title: "GitHub Stars in Context: A Dataset of Repository Popularity Across Accounts"
+type: software
+version: 1.0.0
+date-released: 2026-11-10
+license: MIT
+repository-code: "https://github.com/NaiveNeuron/github-stars-in-context"
+url: "https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context"
+authors:
+  - family-names: Pavlov
+    given-names: Mykhailo
+    orcid: "https://orcid.org/0009-0005-3968-4504"
+    affiliation: "Comenius University in Bratislava"
+  - family-names: Šuppa
+    given-names: Marek
+    orcid: "https://orcid.org/0000-0002-5887-0696"
+    affiliation: "Comenius University in Bratislava"

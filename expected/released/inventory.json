@@ -1,0 +1,864 @@
+{
+  "provenance": {
+    "checksum_matches_expected": false,
+    "code_hashes_captured_at": "2026-11-06T10:38:02.475188+00:00",
+    "collector_semantics": {
+      "active": true,
+      "classification_basis": "persisted released account classification ledger",
+      "classification_columns_available": false,
+      "classification_ledger_used": true,
+      "limitations": [
+        "Classes are inferred from the pinned collector state machine, not independent proof of the stored repository rowset",
+        "An empty successful refresh can retain older rows because deletion runs only when seen_repo_ids is nonempty (database.py:115-120)",
+        "last_updated is shared by discovery, profile and link stages and by sentinels; it is not a repository retrieval timestamp",
+        "An all-default empty profile can represent either a failed profile request or a genuine empty profile; masking is conservative"
+      ],
+      "policy_id": "git-h-index-fe2d7196-v1",
+      "profile_availability_ledger_used": true,
+      "profile_signature_columns_available": false,
+      "revision": "fe2d7196f4fe305a7a42bb871d267a751f5513f8",
+      "rowset_completeness_independently_certified": false
+    },
+    "common_sha256": "79b3c9a8f61960cdde72c5732f4542b2658f6c68a7a6f0721d56f4eddbfec902",
+    "data_kind": "research",
+    "database_access": {
+      "cache_kib": 65536,
+      "immutable": true,
+      "mode": "ro",
+      "query_only": true,
+      "temp_store": "MEMORY"
+    },
+    "elapsed_seconds": 9.690257459064014,
+    "expected_input_sha256": null,
+    "generated_at": "2026-11-06T10:38:12.164748+00:00",
+    "input_bytes": 5964476416,
+    "input_name": "portfolios.sqlite",
+    "input_role": "released_export",
+    "input_sha256": "b7c6790e562fa970dc4f95e9a7ce3039c834f033b1b0ac947f80ecaa6dff6acc",
+    "manifest_sha256": "9ac8f90179e26f6ab5cbf67bd8a818d394b7a505eac1fe7cae1c25f2cb86562c",
+    "manuscript_results_allowed": true,
+    "python": "3.12.1",
+    "release_version": null,
+    "script": "inventory.py",
+    "script_path": "[provider-local-path-omitted]",
+    "script_sha256": "ac8d4df840e083140653ef7357a1fa44cd62bc53e1e4ca96aea0b101d3d08a45",
+    "sidecar_sha256": {},
+    "source_audit": false,
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8"
+  },
+  "results": {
+    "audit_only": false,
+    "autoincrement_sequences": [],
+    "connection_settings": {
+      "cache_size": -65536,
+      "query_only": 1,
+      "temp_store": 2
+    },
+    "input_role": "released_export",
+    "schema_comparison": {
+      "ddl_text_note": "DDL text differences can reflect formatting or constraint spelling; inspect the saved SQL and structural comparisons",
+      "extra_tables": [
+        "portfolios",
+        "release_metadata"
+      ],
+      "missing_tables": [
+        "sqlite_sequence",
+        "user_links"
+      ],
+      "reference": "tests/fixtures/schema.sql",
+      "reference_kind": "Documented thesis DDL; not collector execution evidence",
+      "reference_sha256": "01565c165cce9caf6308ae62314c1fb51277842dd6e9493e666f961a40dc6b63",
+      "tables": {
+        "repositories": {
+          "changed_column_definitions": {
+            "created_at": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "TEXT"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "TEXT"
+              }
+            },
+            "name": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "TEXT"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "TEXT"
+              }
+            },
+            "repository_id": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "BIGINT"
+              }
+            },
+            "stars": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "INTEGER"
+              }
+            },
+            "user_id": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "INTEGER"
+              }
+            }
+          },
+          "changed_index_definitions": {},
+          "column_order_matches": true,
+          "extra_columns": [],
+          "extra_indexes": [
+            "repositories_owner_repo_idx"
+          ],
+          "foreign_keys_match": false,
+          "missing_columns": [],
+          "missing_indexes": [
+            "idx_repo_user",
+            "sqlite_autoindex_repositories_1"
+          ],
+          "normalized_ddl_text_matches": false,
+          "unique_keys_match": false
+        },
+        "users": {
+          "changed_column_definitions": {
+            "created_at": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "TEXT"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "TEXT"
+              }
+            },
+            "followers_count": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": "0",
+                "notnull": true,
+                "pk": 0,
+                "type": "INTEGER"
+              }
+            },
+            "github_id": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "BIGINT"
+              }
+            },
+            "github_name": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "TEXT"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "TEXT"
+              }
+            },
+            "h_index": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": "0",
+                "notnull": true,
+                "pk": 0,
+                "type": "INTEGER"
+              }
+            },
+            "last_updated": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "TEXT"
+              },
+              "documented": {
+                "default": null,
+                "notnull": true,
+                "pk": 0,
+                "type": "TEXT"
+              }
+            },
+            "repositories_fetched": {
+              "actual": {
+                "default": null,
+                "notnull": false,
+                "pk": 0,
+                "type": "INTEGER"
+              },
+              "documented": {
+                "default": "0",
+                "notnull": true,
+                "pk": 0,
+                "type": "BOOLEAN"
+              }
+            }
+          },
+          "changed_index_definitions": {},
+          "column_order_matches": false,
+          "extra_columns": [
+            "bio_was_null",
+            "followers_count_raw",
+            "profile_available",
+            "profile_default_signature",
+            "retrieval_evidence_ref",
+            "retrieval_inference_basis",
+            "retrieval_status",
+            "rowset_completeness_independently_certified"
+          ],
+          "extra_indexes": [
+            "users_github_id_idx",
+            "users_login_idx",
+            "users_status_idx"
+          ],
+          "foreign_keys_match": true,
+          "missing_columns": [
+            "bio",
+            "bio_length",
+            "company",
+            "following_count",
+            "links_parsed_at",
+            "location",
+            "organizations_count",
+            "sponsors_count"
+          ],
+          "missing_indexes": [
+            "idx_user_github_id",
+            "idx_user_github_name",
+            "idx_users_followers",
+            "idx_users_h_index",
+            "idx_users_links_parsed",
+            "idx_users_need_fetch",
+            "sqlite_autoindex_users_1",
+            "sqlite_autoindex_users_2"
+          ],
+          "normalized_ddl_text_matches": false,
+          "unique_keys_match": true
+        }
+      }
+    },
+    "schema_objects": [
+      {
+        "name": "repositories_owner_repo_idx",
+        "sql": "CREATE INDEX repositories_owner_repo_idx ON repositories(user_id,repository_id)",
+        "tbl_name": "repositories",
+        "type": "index"
+      },
+      {
+        "name": "sqlite_autoindex_release_metadata_1",
+        "sql": null,
+        "tbl_name": "release_metadata",
+        "type": "index"
+      },
+      {
+        "name": "users_github_id_idx",
+        "sql": "CREATE UNIQUE INDEX users_github_id_idx ON users(github_id)",
+        "tbl_name": "users",
+        "type": "index"
+      },
+      {
+        "name": "users_login_idx",
+        "sql": "CREATE UNIQUE INDEX users_login_idx ON users(github_name)",
+        "tbl_name": "users",
+        "type": "index"
+      },
+      {
+        "name": "users_status_idx",
+        "sql": "CREATE INDEX users_status_idx ON users(retrieval_status)",
+        "tbl_name": "users",
+        "type": "index"
+      },
+      {
+        "name": "portfolios",
+        "sql": "CREATE TABLE \"portfolios\" (\"user_id\" INTEGER PRIMARY KEY, \"github_id\" INTEGER, \"n_repositories\" INTEGER, \"total_stars\" INTEGER, \"max_stars\" INTEGER, \"sum_squared_stars\" INTEGER, \"h_observed\" INTEGER, \"h_stored\" INTEGER, \"starred_repositories\" INTEGER, \"concentration\" REAL, \"effective_breadth\" REAL, \"retrieval_status\" TEXT, \"profile_available\" INTEGER, \"valid_portfolio\" INTEGER, \"eligible\" INTEGER, \"exclusion_reason\" TEXT)",
+        "tbl_name": "portfolios",
+        "type": "table"
+      },
+      {
+        "name": "release_metadata",
+        "sql": "CREATE TABLE release_metadata (key TEXT PRIMARY KEY,value TEXT)",
+        "tbl_name": "release_metadata",
+        "type": "table"
+      },
+      {
+        "name": "repositories",
+        "sql": "CREATE TABLE \"repositories\" (\"id\" INTEGER PRIMARY KEY, \"user_id\" INTEGER, \"repository_id\" INTEGER, \"name\" TEXT, \"created_at\" TEXT, \"stars\" INTEGER)",
+        "tbl_name": "repositories",
+        "type": "table"
+      },
+      {
+        "name": "users",
+        "sql": "CREATE TABLE \"users\" (\"id\" INTEGER PRIMARY KEY, \"github_id\" INTEGER, \"github_name\" TEXT, \"created_at\" TEXT, \"last_updated\" TEXT, \"h_index\" INTEGER, \"repositories_fetched\" INTEGER, \"followers_count\" INTEGER, \"followers_count_raw\" INTEGER, \"retrieval_status\" TEXT, \"profile_available\" INTEGER, \"bio_was_null\" INTEGER, \"profile_default_signature\" INTEGER, \"retrieval_inference_basis\" TEXT, \"retrieval_evidence_ref\" TEXT, \"rowset_completeness_independently_certified\" INTEGER)",
+        "tbl_name": "users",
+        "type": "table"
+      },
+      {
+        "name": "identifier_crosswalk",
+        "sql": "CREATE VIEW identifier_crosswalk AS\nSELECT r.id AS local_repository_row_id, u.id AS local_owner_id,\n       u.github_id AS github_owner_id, r.repository_id AS github_repository_id,\n       u.github_name AS owner_login, r.name AS repository_name_stored,\n       CASE WHEN instr(r.name, '/') > 0 THEN substr(r.name, instr(r.name, '/') + 1)\n            ELSE r.name END AS repository_name,\n       u.github_name || '/' || CASE WHEN instr(r.name, '/') > 0\n            THEN substr(r.name, instr(r.name, '/') + 1) ELSE r.name END AS owner_name,\n       'https://github.com/' || u.github_name || '/' || CASE WHEN instr(r.name, '/') > 0\n            THEN substr(r.name, instr(r.name, '/') + 1) ELSE r.name END AS repository_url\nFROM repositories r JOIN users u ON u.id=r.user_id",
+        "tbl_name": "identifier_crosswalk",
+        "type": "view"
+      }
+    ],
+    "sequence_interpretation": "Sequence highwater minus row count is descriptive, not a deleted-row count. Gaps can result from failed inserts, explicit IDs, replacement or deletion, and do not establish which occurred",
+    "sqlite_version": "3.44.2",
+    "tables": {
+      "portfolios": {
+        "columns": [
+          {
+            "cid": 0,
+            "dflt_value": null,
+            "name": "user_id",
+            "notnull": 0,
+            "pk": 1,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 1,
+            "dflt_value": null,
+            "name": "github_id",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 2,
+            "dflt_value": null,
+            "name": "n_repositories",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 3,
+            "dflt_value": null,
+            "name": "total_stars",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 4,
+            "dflt_value": null,
+            "name": "max_stars",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 5,
+            "dflt_value": null,
+            "name": "sum_squared_stars",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 6,
+            "dflt_value": null,
+            "name": "h_observed",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 7,
+            "dflt_value": null,
+            "name": "h_stored",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 8,
+            "dflt_value": null,
+            "name": "starred_repositories",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 9,
+            "dflt_value": null,
+            "name": "concentration",
+            "notnull": 0,
+            "pk": 0,
+            "type": "REAL"
+          },
+          {
+            "cid": 10,
+            "dflt_value": null,
+            "name": "effective_breadth",
+            "notnull": 0,
+            "pk": 0,
+            "type": "REAL"
+          },
+          {
+            "cid": 11,
+            "dflt_value": null,
+            "name": "retrieval_status",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 12,
+            "dflt_value": null,
+            "name": "profile_available",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 13,
+            "dflt_value": null,
+            "name": "valid_portfolio",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 14,
+            "dflt_value": null,
+            "name": "eligible",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 15,
+            "dflt_value": null,
+            "name": "exclusion_reason",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          }
+        ],
+        "ddl": "CREATE TABLE \"portfolios\" (\"user_id\" INTEGER PRIMARY KEY, \"github_id\" INTEGER, \"n_repositories\" INTEGER, \"total_stars\" INTEGER, \"max_stars\" INTEGER, \"sum_squared_stars\" INTEGER, \"h_observed\" INTEGER, \"h_stored\" INTEGER, \"starred_repositories\" INTEGER, \"concentration\" REAL, \"effective_breadth\" REAL, \"retrieval_status\" TEXT, \"profile_available\" INTEGER, \"valid_portfolio\" INTEGER, \"eligible\" INTEGER, \"exclusion_reason\" TEXT)",
+        "foreign_keys": [],
+        "indexes": [],
+        "rows": 3671497
+      },
+      "release_metadata": {
+        "columns": [
+          {
+            "cid": 0,
+            "dflt_value": null,
+            "name": "key",
+            "notnull": 0,
+            "pk": 1,
+            "type": "TEXT"
+          },
+          {
+            "cid": 1,
+            "dflt_value": null,
+            "name": "value",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          }
+        ],
+        "ddl": "CREATE TABLE release_metadata (key TEXT PRIMARY KEY,value TEXT)",
+        "foreign_keys": [],
+        "indexes": [
+          {
+            "columns": [
+              {
+                "cid": 0,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 1,
+                "name": "key",
+                "seqno": 0
+              },
+              {
+                "cid": -1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 0,
+                "name": null,
+                "seqno": 1
+              }
+            ],
+            "ddl": null,
+            "name": "sqlite_autoindex_release_metadata_1",
+            "origin": "pk",
+            "partial": 0,
+            "seq": 0,
+            "unique": 1
+          }
+        ],
+        "rows": 2
+      },
+      "repositories": {
+        "columns": [
+          {
+            "cid": 0,
+            "dflt_value": null,
+            "name": "id",
+            "notnull": 0,
+            "pk": 1,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 1,
+            "dflt_value": null,
+            "name": "user_id",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 2,
+            "dflt_value": null,
+            "name": "repository_id",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 3,
+            "dflt_value": null,
+            "name": "name",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 4,
+            "dflt_value": null,
+            "name": "created_at",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 5,
+            "dflt_value": null,
+            "name": "stars",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          }
+        ],
+        "ddl": "CREATE TABLE \"repositories\" (\"id\" INTEGER PRIMARY KEY, \"user_id\" INTEGER, \"repository_id\" INTEGER, \"name\" TEXT, \"created_at\" TEXT, \"stars\" INTEGER)",
+        "foreign_keys": [],
+        "indexes": [
+          {
+            "columns": [
+              {
+                "cid": 1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 1,
+                "name": "user_id",
+                "seqno": 0
+              },
+              {
+                "cid": 2,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 1,
+                "name": "repository_id",
+                "seqno": 1
+              },
+              {
+                "cid": -1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 0,
+                "name": null,
+                "seqno": 2
+              }
+            ],
+            "ddl": "CREATE INDEX repositories_owner_repo_idx ON repositories(user_id,repository_id)",
+            "name": "repositories_owner_repo_idx",
+            "origin": "c",
+            "partial": 0,
+            "seq": 0,
+            "unique": 0
+          }
+        ],
+        "rows": 53990808
+      },
+      "users": {
+        "columns": [
+          {
+            "cid": 0,
+            "dflt_value": null,
+            "name": "id",
+            "notnull": 0,
+            "pk": 1,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 1,
+            "dflt_value": null,
+            "name": "github_id",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 2,
+            "dflt_value": null,
+            "name": "github_name",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 3,
+            "dflt_value": null,
+            "name": "created_at",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 4,
+            "dflt_value": null,
+            "name": "last_updated",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 5,
+            "dflt_value": null,
+            "name": "h_index",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 6,
+            "dflt_value": null,
+            "name": "repositories_fetched",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 7,
+            "dflt_value": null,
+            "name": "followers_count",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 8,
+            "dflt_value": null,
+            "name": "followers_count_raw",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 9,
+            "dflt_value": null,
+            "name": "retrieval_status",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 10,
+            "dflt_value": null,
+            "name": "profile_available",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 11,
+            "dflt_value": null,
+            "name": "bio_was_null",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 12,
+            "dflt_value": null,
+            "name": "profile_default_signature",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          },
+          {
+            "cid": 13,
+            "dflt_value": null,
+            "name": "retrieval_inference_basis",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 14,
+            "dflt_value": null,
+            "name": "retrieval_evidence_ref",
+            "notnull": 0,
+            "pk": 0,
+            "type": "TEXT"
+          },
+          {
+            "cid": 15,
+            "dflt_value": null,
+            "name": "rowset_completeness_independently_certified",
+            "notnull": 0,
+            "pk": 0,
+            "type": "INTEGER"
+          }
+        ],
+        "ddl": "CREATE TABLE \"users\" (\"id\" INTEGER PRIMARY KEY, \"github_id\" INTEGER, \"github_name\" TEXT, \"created_at\" TEXT, \"last_updated\" TEXT, \"h_index\" INTEGER, \"repositories_fetched\" INTEGER, \"followers_count\" INTEGER, \"followers_count_raw\" INTEGER, \"retrieval_status\" TEXT, \"profile_available\" INTEGER, \"bio_was_null\" INTEGER, \"profile_default_signature\" INTEGER, \"retrieval_inference_basis\" TEXT, \"retrieval_evidence_ref\" TEXT, \"rowset_completeness_independently_certified\" INTEGER)",
+        "foreign_keys": [],
+        "indexes": [
+          {
+            "columns": [
+              {
+                "cid": 1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 1,
+                "name": "github_id",
+                "seqno": 0
+              },
+              {
+                "cid": -1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 0,
+                "name": null,
+                "seqno": 1
+              }
+            ],
+            "ddl": "CREATE UNIQUE INDEX users_github_id_idx ON users(github_id)",
+            "name": "users_github_id_idx",
+            "origin": "c",
+            "partial": 0,
+            "seq": 2,
+            "unique": 1
+          },
+          {
+            "columns": [
+              {
+                "cid": 2,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 1,
+                "name": "github_name",
+                "seqno": 0
+              },
+              {
+                "cid": -1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 0,
+                "name": null,
+                "seqno": 1
+              }
+            ],
+            "ddl": "CREATE UNIQUE INDEX users_login_idx ON users(github_name)",
+            "name": "users_login_idx",
+            "origin": "c",
+            "partial": 0,
+            "seq": 1,
+            "unique": 1
+          },
+          {
+            "columns": [
+              {
+                "cid": 9,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 1,
+                "name": "retrieval_status",
+                "seqno": 0
+              },
+              {
+                "cid": -1,
+                "coll": "BINARY",
+                "desc": 0,
+                "key": 0,
+                "name": null,
+                "seqno": 1
+              }
+            ],
+            "ddl": "CREATE INDEX users_status_idx ON users(retrieval_status)",
+            "name": "users_status_idx",
+            "origin": "c",
+            "partial": 0,
+            "seq": 0,
+            "unique": 0
+          }
+        ],
+        "rows": 3671497
+      }
+    }
+  }
+}

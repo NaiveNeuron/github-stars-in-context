@@ -1,0 +1,2093 @@
+{
+  "provenance": {
+    "accepted_source_evidence": [
+      {
+        "path": "evidence/release/r1-thresholds.json",
+        "sha256": "127e17eb901a6b99613f4ea7369aa6038a420c0948b7a1d7e85ae3356c2f5eb1"
+      },
+      {
+        "path": "evidence/release/r2-portfolios.json",
+        "sha256": "9fedb32a77a7027ac7d18ef1b5d3392f3b4fb025f11bbcb0f0dfed68207ed3c1"
+      },
+      {
+        "path": "evidence/release/r3-owner-clustering.json",
+        "sha256": "00a2e8d5c2235a2ce326ead408d507c056d54b1ac483bdafff5d591f2a176556"
+      }
+    ],
+    "actual_inputs": [
+      {
+        "bytes": 95818356,
+        "matches_export_manifest": true,
+        "path": "build/release-v2/users.parquet",
+        "sha256": "31e2ed1dca49096c58d3b0a19f9615a1bc32425d446fba531975dd08f5c5599c",
+        "source_lineage_matches": true
+      },
+      {
+        "bytes": 1532435781,
+        "matches_export_manifest": true,
+        "path": "build/release-v2/repositories.parquet",
+        "sha256": "d80d8171e1965b86adc40d8f361cf141a3d974d0e3c67653f9cf1f334b36c7dc",
+        "source_lineage_matches": true
+      },
+      {
+        "bytes": 57527775,
+        "matches_export_manifest": true,
+        "path": "build/release-v2/portfolios.parquet",
+        "sha256": "4128b044e943fc1c1c0964cb792d29babdc0a65d6d0f35ccd42b5383e509e050",
+        "source_lineage_matches": true
+      }
+    ],
+    "data_kind": "research",
+    "duckdb_configuration": {
+      "memory_limit": "4GB",
+      "temp_directory": "disabled",
+      "threads": 4
+    },
+    "duckdb_version": "2.0.0",
+    "export_evidence_sha256": "9e53619a558448f9bf3c796fbaf915d957bfd3f2c746c07626d581c8824dbc9f",
+    "generated_at": "2026-11-06T10:49:04.780489+00:00",
+    "host": {
+      "machine": "arm64",
+      "system": "Darwin"
+    },
+    "input_role": "full_minimized_parquet_export",
+    "input_sha256_by_file": {
+      "build/release-v2/portfolios.parquet": "4128b044e943fc1c1c0964cb792d29babdc0a65d6d0f35ccd42b5383e509e050",
+      "build/release-v2/repositories.parquet": "d80d8171e1965b86adc40d8f361cf141a3d974d0e3c67653f9cf1f334b36c7dc",
+      "build/release-v2/users.parquet": "31e2ed1dca49096c58d3b0a19f9615a1bc32425d446fba531975dd08f5c5599c"
+    },
+    "python": "3.12.1",
+    "recipe_sql_sha256": {
+      "00_load.sql": "51667e7f06c92d120cbb8fa70aafbb59fad541943b7500e9540f1c255db8cb7e",
+      "01_thresholds.sql": "91f46b94fe29306bad532e90479fa14c5c7f0b63c3ec7edef89be7203132b32d",
+      "02_portfolios.sql": "f9044bdd7c872ba99d0c4dbe6fbfc4611ea2735a44f87a6d8b99813086e6f7b9",
+      "02b_rank_overlap.sql": "f3d1b9f94e487b1d2169638566e28a400eadd2cec3118188d2dd96e371d2fd99",
+      "03_owner_clustering.sql": "fd628e4f7ca341aab933fef328bd80e7f23791f668458720729043075c32aee3"
+    },
+    "scope": "Software equivalence validation of full exported Parquet tables against accepted source aggregates. No source SQLite access or new scientific interpretation.",
+    "source_sha256": "6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8",
+    "validation_command": [
+      ".venv/bin/python",
+      "scripts/validate_recipes.py",
+      "--release-dir",
+      "build/release-v2",
+      "--source-dir",
+      "evidence/release",
+      "--export-evidence",
+      "evidence/release/export.json",
+      "--out-dir",
+      "evidence/release"
+    ],
+    "validation_script": "scripts/validate_recipes.py",
+    "validation_script_sha256": "4feae0bf0c586c70b53cd1f631ab711b9c184c19b44f372ec680e28e16cfd1a3",
+    "view_loading": "Parameterized DuckDB read_parquet views, equivalent to 00_load.sql without requiring its default release path"
+  },
+  "results": {
+    "comparison_checks": 269,
+    "comparisons": [
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "01_thresholds.sql/output_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "02_portfolios.sql/output_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "02b_rank_overlap.sql/output_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "03_owner_clustering.sql/output_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/baseline_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/retained_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/retained_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/retained_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/retained_owner_baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/retained_owner_baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/hidden_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1/hidden_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1/retained_account_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1/retained_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1/retained_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1/micro_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1/micro_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 1.0015321905143537e-12,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=1/macro_mean_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=1/macro_mean_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/baseline_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/retained_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/retained_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/retained_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/retained_owner_baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/retained_owner_baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/hidden_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=10/hidden_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=10/retained_account_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=10/retained_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=10/retained_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=10/micro_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=10/micro_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 3.2307490016592055e-13,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=10/macro_mean_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 6.822320486321587e-14,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=10/macro_mean_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/baseline_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/retained_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/retained_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/retained_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/retained_owner_baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/retained_owner_baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/hidden_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=100/hidden_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=100/retained_account_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=100/retained_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=100/retained_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=100/micro_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=100/micro_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 8.237854842718662e-14,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=100/macro_mean_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 5.551115123125783e-17,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=100/macro_mean_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/baseline_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/retained_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/retained_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/retained_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/retained_owner_baseline_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/retained_owner_baseline_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/hidden_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R1/t=1000/hidden_stars",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1000/retained_account_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1000/retained_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1000/retained_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1000/micro_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R1/t=1000/micro_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 2.4202861936828413e-14,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=1000/macro_mean_hidden_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 6.661338147750939e-16,
+        "comparison": "macro_mean_absolute_1e-10",
+        "field": "R1/t=1000/macro_mean_hidden_star_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1\u20139/stars_lower_inclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1\u20139/stars_upper_exclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1\u20139/multi_repository_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1\u20139/singleton_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1\u20139/dominant_ge_0_9_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_ge_0_9_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/dominant_share_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1\u20139/effective_breadth_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/10\u201399/stars_lower_inclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/10\u201399/stars_upper_exclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/10\u201399/multi_repository_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/10\u201399/singleton_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/10\u201399/dominant_ge_0_9_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_ge_0_9_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/dominant_share_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/10\u201399/effective_breadth_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/100\u2013999/stars_lower_inclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/100\u2013999/stars_upper_exclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/100\u2013999/multi_repository_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/100\u2013999/singleton_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/100\u2013999/dominant_ge_0_9_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_ge_0_9_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/dominant_share_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/100\u2013999/effective_breadth_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1,000\u20139,999/stars_lower_inclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1,000\u20139,999/stars_upper_exclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1,000\u20139,999/multi_repository_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1,000\u20139,999/singleton_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/1,000\u20139,999/dominant_ge_0_9_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_ge_0_9_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/dominant_share_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/1,000\u20139,999/effective_breadth_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/\u226510,000/stars_lower_inclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": null,
+        "comparison": "null",
+        "field": "R2/\u226510,000/stars_upper_exclusive",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/\u226510,000/multi_repository_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/\u226510,000/singleton_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/\u226510,000/dominant_ge_0_9_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_ge_0_9_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 1.1102230246251565e-16,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/dominant_share_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/p05",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 1.7763568394002505e-15,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/\u226510,000/effective_breadth_quantiles/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/requested_k",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/effective_k",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/exact_overlap_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=100/exact_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/h_boundary_tie_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/star_boundary_tie_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/h_tie_inclusive_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/star_tie_inclusive_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=100/tie_inclusive_overlap_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=100/tie_inclusive_h_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=100/tie_inclusive_star_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/requested_k",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/effective_k",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/exact_overlap_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=1000/exact_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/h_boundary_tie_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/star_boundary_tie_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/h_tie_inclusive_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/star_tie_inclusive_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=1000/tie_inclusive_overlap_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=1000/tie_inclusive_h_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=1000/tie_inclusive_star_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/requested_k",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/effective_k",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/exact_overlap_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=10000/exact_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/h_boundary_tie_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/star_boundary_tie_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/h_tie_inclusive_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/star_tie_inclusive_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R2/k=10000/tie_inclusive_overlap_accounts",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=10000/tie_inclusive_h_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R2/k=10000/tie_inclusive_star_overlap_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/unique_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/rows_from_multiple_row_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/owners_with_multiple_selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/clustered_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/mean_rows_per_retained_owner",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/quantile/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/quantile/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/quantile/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/quantile/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/quantile/p90",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/quantile/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1/quantile/p99",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1/quantile/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/unique_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/rows_from_multiple_row_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/owners_with_multiple_selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/clustered_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/mean_rows_per_retained_owner",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/quantile/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/quantile/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/quantile/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/quantile/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/quantile/p90",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/quantile/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=10/quantile/p99",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=10/quantile/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/unique_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/rows_from_multiple_row_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/owners_with_multiple_selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/clustered_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/mean_rows_per_retained_owner",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/quantile/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/quantile/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/quantile/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/quantile/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/quantile/p90",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/quantile/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=100/quantile/p99",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=100/quantile/max",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/threshold",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/unique_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/rows_from_multiple_row_owners",
+        "passed": true
+      },
+      {
+        "absolute_error": 0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/owners_with_multiple_selected_rows",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/clustered_row_fraction",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/mean_rows_per_retained_owner",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/quantile/min",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/quantile/q1",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/quantile/median",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/quantile/q3",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/quantile/p90",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/quantile/p95",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "float_relative_1e-12_absolute_1e-14",
+        "field": "R3/t=1000/quantile/p99",
+        "passed": true
+      },
+      {
+        "absolute_error": 0.0,
+        "comparison": "integer_exact",
+        "field": "R3/t=1000/quantile/max",
+        "passed": true
+      }
+    ],
+    "float_absolute_tolerance": 1e-14,
+    "float_relative_tolerance": 1e-12,
+    "input_files_modified": false,
+    "integer_comparison": "exact",
+    "macro_mean_absolute_tolerance": 1e-10,
+    "macro_mean_reason": "Python sequential sums and DuckDB AVG use different floating reduction orders across millions of owner fractions",
+    "max_macro_mean_absolute_difference": 1.0015321905143537e-12,
+    "peak_rss_bytes": 1377746944,
+    "private_collector_required": false,
+    "query_outputs": {
+      "01_thresholds.sql": [
+        {
+          "baseline_accounts": 3615479,
+          "baseline_rows": 53987867,
+          "baseline_stars": 239997596,
+          "hidden_rows": 29721738,
+          "hidden_stars": 0,
+          "macro_mean_hidden_row_fraction": 0.6172130304848488,
+          "macro_mean_hidden_star_fraction": 0.0,
+          "micro_hidden_row_fraction": 0.7033616496359133,
+          "micro_hidden_star_fraction": 0.0,
+          "retained_account_fraction": 0.5486620168447943,
+          "retained_accounts": 1983676,
+          "retained_owner_baseline_rows": 42256694,
+          "retained_owner_baseline_stars": 239997596,
+          "retained_row_fraction": 0.23218098244185123,
+          "retained_rows": 12534956,
+          "retained_star_fraction": 1.0,
+          "retained_stars": 239997596,
+          "threshold": 1
+        },
+        {
+          "baseline_accounts": 3615479,
+          "baseline_rows": 53987867,
+          "baseline_stars": 239997596,
+          "hidden_rows": 12023883,
+          "hidden_stars": 11779239,
+          "macro_mean_hidden_row_fraction": 0.7890410431772268,
+          "macro_mean_hidden_star_fraction": 0.21377540166431752,
+          "micro_hidden_row_fraction": 0.8851060249408874,
+          "micro_hidden_star_fraction": 0.05136861570869936,
+          "retained_account_fraction": 0.15129475236891157,
+          "retained_accounts": 547003,
+          "retained_owner_baseline_rows": 13584681,
+          "retained_owner_baseline_stars": 229308087,
+          "retained_row_fraction": 0.028910162351848425,
+          "retained_rows": 1560798,
+          "retained_star_fraction": 0.9063792788991103,
+          "retained_stars": 217528848,
+          "threshold": 10
+        },
+        {
+          "baseline_accounts": 3615479,
+          "baseline_rows": 53987867,
+          "baseline_stars": 239997596,
+          "hidden_rows": 3908586,
+          "hidden_stars": 20812578,
+          "macro_mean_hidden_row_fraction": 0.8433933794015285,
+          "macro_mean_hidden_star_fraction": 0.19809824062119932,
+          "micro_hidden_row_fraction": 0.9355379805462167,
+          "micro_hidden_star_fraction": 0.10313427670759556,
+          "retained_account_fraction": 0.0427016724478278,
+          "retained_accounts": 154387,
+          "retained_owner_baseline_rows": 4177902,
+          "retained_owner_baseline_stars": 201800785,
+          "retained_row_fraction": 0.004988454165081202,
+          "retained_rows": 269316,
+          "retained_star_fraction": 0.7541250829862479,
+          "retained_stars": 180988207,
+          "threshold": 100
+        },
+        {
+          "baseline_accounts": 3615479,
+          "baseline_rows": 53987867,
+          "baseline_stars": 239997596,
+          "hidden_rows": 745506,
+          "hidden_stars": 21327922,
+          "macro_mean_hidden_row_fraction": 0.8784315693951108,
+          "macro_mean_hidden_star_fraction": 0.18013338001670665,
+          "micro_hidden_row_fraction": 0.9600083444721735,
+          "micro_hidden_star_fraction": 0.15657829078988414,
+          "retained_account_fraction": 0.006484064767075123,
+          "retained_accounts": 23443,
+          "retained_owner_baseline_rows": 776562,
+          "retained_owner_baseline_stars": 136212510,
+          "retained_row_fraction": 0.0005752403590977209,
+          "retained_rows": 31056,
+          "retained_star_fraction": 0.47869057821729183,
+          "retained_stars": 114884588,
+          "threshold": 1000
+        }
+      ],
+      "02_portfolios.sql": [
+        {
+          "band": 0,
+          "dominant_ge_0_9_accounts": 452450,
+          "dominant_ge_0_9_fraction": 0.42462755344328884,
+          "dominant_share_quantiles": [
+            0.1111111111111111,
+            0.2222222222222222,
+            0.4444444444444444,
+            0.6666666666666666,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "effective_breadth_quantiles": [
+            1.0,
+            1.0,
+            1.0,
+            1.8,
+            2.909090909090909,
+            5.4,
+            9.0
+          ],
+          "label": "1-9",
+          "multi_repository_accounts": 1065522,
+          "singleton_accounts": 53755,
+          "stars_lower_inclusive": 1,
+          "stars_upper_exclusive": 10
+        },
+        {
+          "band": 1,
+          "dominant_ge_0_9_accounts": 52718,
+          "dominant_ge_0_9_fraction": 0.08521829935194779,
+          "dominant_share_quantiles": [
+            0.010101010101010102,
+            0.08333333333333333,
+            0.22580645161290322,
+            0.4,
+            0.6363636363636364,
+            0.9523809523809523,
+            1.0
+          ],
+          "effective_breadth_quantiles": [
+            1.0,
+            1.0997506234413965,
+            2.0864197530864197,
+            3.8693249111725225,
+            7.511111111111111,
+            18.846153846153847,
+            99.0
+          ],
+          "label": "10-99",
+          "multi_repository_accounts": 618623,
+          "singleton_accounts": 10258,
+          "stars_lower_inclusive": 10,
+          "stars_upper_exclusive": 100
+        },
+        {
+          "band": 2,
+          "dominant_ge_0_9_accounts": 33179,
+          "dominant_ge_0_9_fraction": 0.169965677987808,
+          "dominant_share_quantiles": [
+            0.00199203187250996,
+            0.1282051282051282,
+            0.35195530726256985,
+            0.5612678119749093,
+            0.8211009174311926,
+            0.9865928630858832,
+            1.0
+          ],
+          "effective_breadth_quantiles": [
+            1.0,
+            1.0272058483320223,
+            1.4531418637109468,
+            2.5255723978679985,
+            4.790332858637063,
+            17.477759472817134,
+            823.5804416403786
+          ],
+          "label": "100-999",
+          "multi_repository_accounts": 195210,
+          "singleton_accounts": 3741,
+          "stars_lower_inclusive": 100,
+          "stars_upper_exclusive": 1000
+        },
+        {
+          "band": 3,
+          "dominant_ge_0_9_accounts": 8285,
+          "dominant_ge_0_9_fraction": 0.2489707605853893,
+          "dominant_share_quantiles": [
+            0.0008032128514056225,
+            0.2034130028288502,
+            0.4209203706612219,
+            0.658578856152513,
+            0.8993759750390016,
+            0.9940886979186828,
+            1.0
+          ],
+          "effective_breadth_quantiles": [
+            1.0,
+            1.011919603018083,
+            1.2305225180499622,
+            2.0414450201207175,
+            3.778703187828969,
+            10.364061193613619,
+            3956.8988979396263
+          ],
+          "label": "1000-9999",
+          "multi_repository_accounts": 33277,
+          "singleton_accounts": 566,
+          "stars_lower_inclusive": 1000,
+          "stars_upper_exclusive": 10000
+        },
+        {
+          "band": 4,
+          "dominant_ge_0_9_accounts": 847,
+          "dominant_ge_0_9_fraction": 0.3148698884758364,
+          "dominant_share_quantiles": [
+            0.0024008990600735596,
+            0.18376535241514566,
+            0.4339689425463957,
+            0.7174671689841026,
+            0.9381794877511715,
+            0.9963783101298458,
+            1.0
+          ],
+          "effective_breadth_quantiles": [
+            1.0,
+            1.007279580350825,
+            1.1341706195755101,
+            1.8302185184996786,
+            3.644958463657205,
+            11.647426303986459,
+            4813.638780677834
+          ],
+          "label": ">=10000",
+          "multi_repository_accounts": 2690,
+          "singleton_accounts": 34,
+          "stars_lower_inclusive": 10000,
+          "stars_upper_exclusive": null
+        }
+      ],
+      "02b_rank_overlap.sql": [
+        {
+          "cohort_accounts": 3615479,
+          "effective_k": 100,
+          "exact_overlap_accounts": 20,
+          "exact_overlap_fraction": 0.2,
+          "h_boundary_tie_accounts": 6,
+          "h_cutoff": 50,
+          "h_tie_inclusive_accounts": 102,
+          "requested_k": 100,
+          "star_boundary_tie_accounts": 1,
+          "star_cutoff": 75877,
+          "star_tie_inclusive_accounts": 100,
+          "tie_inclusive_h_overlap_fraction": 0.19607843137254902,
+          "tie_inclusive_overlap_accounts": 20,
+          "tie_inclusive_star_overlap_fraction": 0.2
+        },
+        {
+          "cohort_accounts": 3615479,
+          "effective_k": 1000,
+          "exact_overlap_accounts": 254,
+          "exact_overlap_fraction": 0.254,
+          "h_boundary_tie_accounts": 151,
+          "h_cutoff": 25,
+          "h_tie_inclusive_accounts": 1125,
+          "requested_k": 1000,
+          "star_boundary_tie_accounts": 1,
+          "star_cutoff": 20020,
+          "star_tie_inclusive_accounts": 1000,
+          "tie_inclusive_h_overlap_fraction": 0.23555555555555555,
+          "tie_inclusive_overlap_accounts": 265,
+          "tie_inclusive_star_overlap_fraction": 0.265
+        },
+        {
+          "cohort_accounts": 3615479,
+          "effective_k": 10000,
+          "exact_overlap_accounts": 3705,
+          "exact_overlap_fraction": 0.3705,
+          "h_boundary_tie_accounts": 2862,
+          "h_cutoff": 12,
+          "h_tie_inclusive_accounts": 12740,
+          "requested_k": 10000,
+          "star_boundary_tie_accounts": 2,
+          "star_cutoff": 3523,
+          "star_tie_inclusive_accounts": 10001,
+          "tie_inclusive_h_overlap_fraction": 0.32433281004709574,
+          "tie_inclusive_overlap_accounts": 4132,
+          "tie_inclusive_star_overlap_fraction": 0.41315868413158685
+        }
+      ],
+      "03_owner_clustering.sql": [
+        {
+          "clustered_row_fraction": 0.9564799429690858,
+          "mean_rows_per_retained_owner": 6.319054119725197,
+          "owners_with_multiple_selected_rows": 1438154,
+          "rows_from_multiple_row_owners": 11989434,
+          "rows_per_owner_quantiles": [
+            1.0,
+            1.0,
+            3.0,
+            7.0,
+            14.0,
+            22.0,
+            46.0,
+            9971.0
+          ],
+          "selected_rows": 12534956,
+          "threshold": 1,
+          "unique_owners": 1983676
+        },
+        {
+          "clustered_row_fraction": 0.8279501895825084,
+          "mean_rows_per_retained_owner": 2.853362778631927,
+          "owners_with_multiple_selected_rows": 278468,
+          "rows_from_multiple_row_owners": 1292263,
+          "rows_per_owner_quantiles": [
+            1.0,
+            1.0,
+            2.0,
+            3.0,
+            6.0,
+            9.0,
+            20.0,
+            1067.0
+          ],
+          "selected_rows": 1560798,
+          "threshold": 10,
+          "unique_owners": 547003
+        },
+        {
+          "clustered_row_fraction": 0.6006846975300391,
+          "mean_rows_per_retained_owner": 1.7444214862650353,
+          "owners_with_multiple_selected_rows": 46845,
+          "rows_from_multiple_row_owners": 161774,
+          "rows_per_owner_quantiles": [
+            1.0,
+            1.0,
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            10.0,
+            456.0
+          ],
+          "selected_rows": 269316,
+          "threshold": 100,
+          "unique_owners": 154387
+        },
+        {
+          "clustered_row_fraction": 0.3761591962905719,
+          "mean_rows_per_retained_owner": 1.3247451264769867,
+          "owners_with_multiple_selected_rows": 4069,
+          "rows_from_multiple_row_owners": 11682,
+          "rows_per_owner_quantiles": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            2.0,
+            3.0,
+            6.0,
+            91.0
+          ],
+          "selected_rows": 31056,
+          "threshold": 1000,
+          "unique_owners": 23443
+        }
+      ]
+    },
+    "raw_source_database_opened": false,
+    "recipe_timings": [
+      {
+        "output_rows": 4,
+        "recipe": "01_thresholds.sql",
+        "seconds": 1.3196373750688508
+      },
+      {
+        "output_rows": 5,
+        "recipe": "02_portfolios.sql",
+        "seconds": 0.38254200003575534
+      },
+      {
+        "output_rows": 3,
+        "recipe": "02b_rank_overlap.sql",
+        "seconds": 0.9715829159831628
+      },
+      {
+        "output_rows": 4,
+        "recipe": "03_owner_clustering.sql",
+        "seconds": 0.9757958329282701
+      }
+    ],
+    "status": "passed",
+    "timing_scope": "One process, four DuckDB threads. Cache not flushed. Total includes input hashes and query work; per-recipe times exclude initial hashes.",
+    "total_seconds_including_input_hashes": 4.746842916938476
+  }
+}

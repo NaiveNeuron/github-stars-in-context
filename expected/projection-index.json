@@ -1,0 +1,83 @@
+{
+  "files": [
+    {
+      "member": "expected/source/r1-thresholds.json",
+      "original_sha256": "127e17eb901a6b99613f4ea7369aa6038a420c0948b7a1d7e85ae3356c2f5eb1",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "510efa67fa5658979ea6e415f8a0000cf0b114d0f2beee5cf6fd91393bf712cb"
+    },
+    {
+      "member": "expected/source/r2-portfolios.json",
+      "original_sha256": "9fedb32a77a7027ac7d18ef1b5d3392f3b4fb025f11bbcb0f0dfed68207ed3c1",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "d2f18372f518698f4a415636c12221661ce6f6e9d41ca136c9f5f308d2a57750"
+    },
+    {
+      "member": "expected/source/r3-owner-clustering.json",
+      "original_sha256": "00a2e8d5c2235a2ce326ead408d507c056d54b1ac483bdafff5d591f2a176556",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "f35818b9f0c8fb26e5505e612b1848b285651eb879b80afb3e6635d574f3a904"
+    },
+    {
+      "member": "expected/source/r4-gharchive-join.json",
+      "original_sha256": "6cc284be50045311daf6f7c7406c5eef4a659835725aa693b898688bfc5841c3",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "5de068af16716bfe4358ca63fb5abd054e6408578ab726935ba45faf2afef144"
+    },
+    {
+      "member": "expected/export.json",
+      "original_sha256": "9e53619a558448f9bf3c796fbaf915d957bfd3f2c746c07626d581c8824dbc9f",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "c6da32bc7f704c1c875eaa0459b68ff44c1891ae2674ba57d03514fbfa2730bf"
+    },
+    {
+      "member": "expected/released/r1-thresholds.json",
+      "original_sha256": "af736d325247e5228b54753e199b1a329199769d20a2122c74c11235e95fee47",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "68f92b557eefc6ce190b585dc8e2b57ae0d8b50947513244ac89ade0e9b26d16"
+    },
+    {
+      "member": "expected/released/r2-portfolios.json",
+      "original_sha256": "7334de5dcb8302b5b33707c9479e7470a1c37baef85cb8682da9a3ea5a2e84a3",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "edf50787e2b3bb2e9c0ef7493dcda722f41d236f43cc747c3b09fa633e4fe90c"
+    },
+    {
+      "member": "expected/released/r3-owner-clustering.json",
+      "original_sha256": "3676c1717d288987635181ad7328ea7965a5aa0e838dd98193464f0780edd8b2",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "481e4d9ab334216091f11cd308af21ba540daa327f17283b8b68f17d6df9b4a1"
+    },
+    {
+      "member": "expected/released/r4-gharchive-join.json",
+      "original_sha256": "74aac0ed6f446a33c57ca0b03bf1351690fb9321528a17f26cd989c70d24ea06",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "aa2e8a461be9ac1e1342a24ee276b759f4c5f3bd354f0235530d3a5d42809dd4"
+    },
+    {
+      "member": "expected/released/quality.json",
+      "original_sha256": "faecd47c124901da624d54a95dce675ddcd8545fa5ac2c4e6f0decf65fdd8840",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "7366a81c967c2770c71b764243cd8744d5e6ffac88f003dd59a0ff5c20046483"
+    },
+    {
+      "member": "expected/released/inventory.json",
+      "original_sha256": "298aa6facfe9364122f3f7527c022374642183f432893e57ab3106d964859cc5",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "fdcf00668af3907d21903cd4ee0e0ab5f86b9bc6cbf467f17c2b2d1c46e4f62d"
+    },
+    {
+      "member": "expected/released/reproduction.json",
+      "original_sha256": "e2370027ce10a22f45784227ff338335b4f08a0ddac5db2a904f4f8bd6f4b357",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "e2370027ce10a22f45784227ff338335b4f08a0ddac5db2a904f4f8bd6f4b357"
+    },
+    {
+      "member": "expected/parquet-validation.json",
+      "original_sha256": "9d2f86ae3126158d3dbddf172898335ad8b4ffe431e4f7d543b3236251df7107",
+      "policy": "Only provider display paths redacted. Scientific values and recorded input/code hashes retained.",
+      "portable_sha256": "9d2f86ae3126158d3dbddf172898335ad8b4ffe431e4f7d543b3236251df7107"
+    }
+  ],
+  "policy": "Original evidence is preserved in the author checkout. Portable copies remove display paths, not scientific observations. Original hashes remain historical provenance, not requirements to locate private files."
+}
