@@ -8,6 +8,7 @@ account. `PROVENANCE.md` documents how the data were collected and checked.
 - **Data:** <https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context>
   (three Parquet tables, 1.6 GB, CC BY-NC 4.0)
 - **Code:** this repository (MIT)
+- **Version:** 1.1.0. The data tag `v1.1.0` and the code tag `v1.1.0` belong together
 
 The dataset card describes the files, the collection and the limits of the
 data. This repository lets you check the release and reproduce the reuse
@@ -26,8 +27,8 @@ python3.12 -m venv .venv
 .venv/bin/python -m pip install --require-hashes --only-binary=:all: -r requirements-parquet.lock
 
 mkdir -p data
-base=https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context/resolve/v1.0.0
-for f in users.parquet repositories.parquet portfolios.parquet analysis-manifest.json \
+base=https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context/resolve/v1.1.0
+for f in users.parquet repositories.parquet portfolios.parquet release.json \
          data-dictionary.json data-dictionary.md crosswalk.sql PARQUET-SHA256SUMS; do
   curl -fL -o "data/$f" "$base/$f"
 done
@@ -102,7 +103,7 @@ documents how the Parquet files were exported from the source database with
 | `scripts/` | Export, quality audit, validation and comparison code |
 | `expected/` | Saved aggregate results and figures used as the comparison target |
 | `evidence/comparison/` | A small capability comparison with ecosyste.ms |
-| `release/` | Export manifest, recorded environment and rebuild notes |
+| `release/` | Input manifest of the export, recorded environment and rebuild notes |
 | `collector/` | The collector that produced the source database, with its origin note |
 
 ## Limits
@@ -118,8 +119,7 @@ Code in this repository is released under the MIT licence (`LICENSE`). The
 files under `evidence/comparison/sources/` are unmodified excerpts from
 [ecosyste-ms/repos](https://github.com/ecosyste-ms/repos) and remain under
 AGPL-3.0, as described in `evidence/comparison/THIRD-PARTY-NOTICES.md`. The data are
-released under CC BY-NC 4.0. Manifest files written before the release may
-still list the licences as pending.
+released under CC BY-NC 4.0.
 
 ## Citation
 
