@@ -57,12 +57,27 @@ Archive join uses every repository row.
 | `02b_rank_overlap.sql` | Do total stars and the h-index select the same accounts? | The top-1,000 sets (with ties: 1,125 and 1,000 accounts) share 265 |
 | `03_owner_clustering.sql` | How often do selected repositories share an owner? | At 100 stars, 60.07% of selected rows belong to owners with more than one selected repository |
 | `04_gharchive_join.sql` | Do the repository IDs join to GH Archive? | Of 63,567 repositories with events in one hour, 17,382 are in the dataset |
+| `05_owner_grouped_split.sql` | What does splitting by owner change? | In a random 80/20 split of repositories with at least 100 stars, 55.70% of test rows have an owner who also owns a training row. Splitting by owner leaves none |
 
 The h-index of an account is the largest *h* such that *h* of its
 repositories have at least *h* stars each.
 
-The fifth recipe is not part of `make parquet-check`, because it needs one
-36 MB download from GH Archive:
+`make parquet-check` covers the first four recipes. The owner-grouped split
+and the paper's two figures have their own targets, which also run offline
+on the Parquet tables:
+
+```sh
+make owner-split PYTHON=.venv/bin/python   # ends with PASS
+.venv/bin/python -m pip install matplotlib==3.11.2
+make figures PYTHON=.venv/bin/python       # PASS: 99 plotted values match the saved results
+```
+
+`make figures` writes `results/figures/r1-thresholds.pdf` and
+`r2-portfolios.pdf`, the figures used in the paper. Copies are in
+`expected/figures/`. To get a split you can use, select from the `assigned`
+step of the recipe, which gives every repository row its side.
+
+The GH Archive join needs one 36 MB download from GH Archive:
 
 ```sh
 curl -fL -o data/gharchive-2026-01-03-0.json.gz https://data.gharchive.org/2026-01-03-0.json.gz
@@ -70,8 +85,8 @@ curl -fL -o data/gharchive-2026-01-03-0.json.gz https://data.gharchive.org/2026-
 # [(143769, 143767, 63567, 30738, 17382)]
 ```
 
-`examples/*.py` are the reference implementations that produced the paper's
-figures and saved results. They read a SQLite build of the same tables,
+The other `examples/*.py` files are the reference implementations that
+produced the saved results. They read a SQLite build of the same tables,
 which is not part of the public release because the Parquet files carry the
 same rows. `expected/` holds their saved outputs. `release/PROVIDER-REBUILD.md`
 documents how the Parquet files were exported from the source database with
@@ -81,8 +96,9 @@ documents how the Parquet files were exported from the source database with
 
 | Path | Contents |
 | --- | --- |
-| `examples/recipes/` | DuckDB SQL for the four examples |
-| `examples/*.py` | Reference implementations and figures |
+| `examples/recipes/` | DuckDB SQL for the examples |
+| `examples/make_figures.py` | Draws the paper's figures from the Parquet tables |
+| `examples/*.py` | Reference implementations |
 | `scripts/` | Export, quality audit, validation and comparison code |
 | `expected/` | Saved aggregate results and figures used as the comparison target |
 | `evidence/comparison/` | A small capability comparison with ecosyste.ms |

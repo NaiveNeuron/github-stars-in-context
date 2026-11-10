@@ -1,0 +1,20 @@
+[
+  {
+    "split": "row",
+    "train_rows": 215163,
+    "test_rows": 54153,
+    "test_rows_sharing_owner_with_train": 30165,
+    "test_owners": 44089,
+    "test_owners_also_in_train": 21283,
+    "test_row_share_sharing_owner": 0.5570328513655753
+  },
+  {
+    "split": "owner",
+    "train_rows": 215645,
+    "test_rows": 53671,
+    "test_rows_sharing_owner_with_train": 0,
+    "test_owners": 30548,
+    "test_owners_also_in_train": 0,
+    "test_row_share_sharing_owner": 0.0
+  }
+]
