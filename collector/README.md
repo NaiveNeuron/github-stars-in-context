@@ -1,5 +1,11 @@
 # git-h-index
 
+> **Historical code.** This is the collector's original documentation, kept
+> for provenance. Its title and its ranking functions reflect the thesis
+> project it was written for. They are not endorsed uses of the released
+> dataset, which should not be used to rank or evaluate individuals. See
+> `ORIGIN.md` and the repository README for the supported examples.
+
 Measuring Developer Impact on GitHub Using the h-Index
 
 # Installation
@@ -24,10 +30,8 @@ Edit `.env` and add your GitHub Personal Access Token(s):
 GITHUB_TOKENS=ghp_YourTokenHere
 ```
 
-For multiple tokens (recommended for higher rate limits):
-```bash
-GITHUB_TOKENS=ghp_Token1,ghp_Token2,ghp_Token3
-```
+Use only credentials that you are authorized to use, and follow GitHub's API
+terms and rate limits.
 
 ### Token Generation
 
@@ -127,7 +131,9 @@ uv run python -m data_fetching.main reset-last-updated --date "2000-01-01T00:00:
 
 ### Full Pipeline (Recommended)
 
-**Quick start** - runs everything in correct order with resets:
+**Quick start** - runs everything in correct order with resets. Note that in
+this revision `parse-all` runs a single profile batch (120 accounts by
+default). Run the `profiles` command afterwards to continue profile retrieval:
 
 ```bash
 uv run python -m data_fetching.main parse-all

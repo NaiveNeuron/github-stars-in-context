@@ -6,9 +6,9 @@ repositories they own, with star counts. A row is one repository under one
 account. `PROVENANCE.md` documents how the data were collected and checked.
 
 - **Data:** <https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context>
-  (three Parquet tables, 1.6 GB, CC BY-NC 4.0)
+  (three Parquet tables, 1.57 GiB, CC BY-NC 4.0)
 - **Code:** this repository (MIT)
-- **Version:** 1.1.0. The data tag `v1.1.0` and the code tag `v1.1.0` belong together
+- **Version:** data 1.1.0 (tag `v1.1.0`), code tag `v1.1.1`. Code `v1.1.1` differs from `v1.1.0` in documentation and figure fonts only
 
 The dataset card describes the files, the collection and the limits of the
 data. This repository lets you check the release and reproduce the reuse
@@ -20,7 +20,7 @@ You need CPython 3.12 and about 2 GB of disk. After the download and the
 package install, no network access or GitHub token is needed.
 
 ```sh
-git clone https://github.com/NaiveNeuron/github-stars-in-context
+git clone --branch v1.1.1 --depth 1 https://github.com/NaiveNeuron/github-stars-in-context
 cd github-stars-in-context
 
 python3.12 -m venv .venv
@@ -47,18 +47,18 @@ Max it takes about 20 seconds and 1.5 GB of memory.
 
 ## What the examples compute
 
-The first four recipes use the 3,615,479 accounts whose repository retrieval
-completed, with 53,987,867 repository rows and 239,997,596 stars. The GH
+The first four recipes use the 3,615,479 accounts classified as complete from
+the collector's flags, with 53,987,867 repository rows and 239,997,596 stars. The GH
 Archive join uses every repository row.
 
 | Recipe | Question | Headline result |
 | --- | --- | --- |
 | `01_thresholds.sql` | What does a minimum-star filter keep? | A 10-star filter keeps 2.89% of repository rows and 90.64% of stars, and drops 88.51% of the rows of the owners it keeps |
 | `02_portfolios.sql` | How concentrated are an account's stars? | Among accounts with at least two repositories and at least 10,000 stars, the top repository holds a median 71.7% of them |
-| `02b_rank_overlap.sql` | Do total stars and the h-index select the same accounts? | The top-1,000 sets (with ties: 1,125 and 1,000 accounts) share 265 |
+| `02b_rank_overlap.sql` | Do total stars and the h-index select the same accounts? | With ties included, the h-index selects 1,125 accounts and total stars selects 1,000. The sets share 265 |
 | `03_owner_clustering.sql` | How often do selected repositories share an owner? | At 100 stars, 60.07% of selected rows belong to owners with more than one selected repository |
 | `04_gharchive_join.sql` | Do the repository IDs join to GH Archive? | Of 63,567 repositories with events in one hour, 17,382 are in the dataset |
-| `05_owner_grouped_split.sql` | What does splitting by owner change? | In a random 80/20 split of repositories with at least 100 stars, 55.70% of test rows have an owner who also owns a training row. Splitting by owner leaves none |
+| `05_owner_grouped_split.sql` | What does splitting by owner change? | In a deterministic 80/20 hash split of repositories with at least 100 stars, 55.70% of test rows have an owner who also owns a training row. Splitting by owner leaves none |
 
 The h-index of an account is the largest *h* such that *h* of its
 repositories have at least *h* stars each.
@@ -104,12 +104,14 @@ documents how the Parquet files were exported from the source database with
 | `expected/` | Saved aggregate results and figures used as the comparison target |
 | `evidence/comparison/` | A small capability comparison with ecosyste.ms |
 | `release/` | Input manifest of the export, recorded environment and rebuild notes |
-| `collector/` | The collector that produced the source database, with its origin note |
+| `collector/` | A later revision of the collector used to produce the source database, with its origin note |
 
 ## Limits
 
 The accounts are a follower-selected set, not a random sample of GitHub.
-Retrieval classes come from the collector's logic and are not an independent
+Search cells that could not be split were skipped, and a failed search
+request could drop a cell, so an unknown number of accounts is missing.
+Retrieval classes come from the collector's flags and are not an independent
 check against GitHub. Follower counts are missing for 1,151,092 accounts.
 See the dataset card for details.
 
@@ -125,4 +127,5 @@ released under CC BY-NC 4.0.
 
 A paper describing the dataset is under review. See `CITATION.cff`.
 
-To request removal of an account from the dataset, open an issue.
+To request removal of an account from the dataset, write to marek@suppa.sk or
+open an issue. Please do not post personal documents in a public issue.

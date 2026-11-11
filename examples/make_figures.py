@@ -18,6 +18,7 @@ import duckdb
 import matplotlib
 
 matplotlib.use("Agg")
+matplotlib.rcParams["pdf.fonttype"] = 42  # embed TrueType, not Type 3
 import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
 

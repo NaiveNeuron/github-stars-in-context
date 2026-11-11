@@ -3,7 +3,7 @@
     "repositories.parquet": "d80d8171e1965b86adc40d8f361cf141a3d974d0e3c67653f9cf1f334b36c7dc",
     "portfolios.parquet": "4128b044e943fc1c1c0964cb792d29babdc0a65d6d0f35ccd42b5383e509e050"
   },
-  "script_sha256": "3ffb81891e2f05846740ca98d2a4c84ce9ccfd4d8f9a67b915a25c69ecf450bb",
+  "script_sha256": "d0e4f5a1a75597b758a3ffedacf9eaf954dec5399e9e3be9cf5235c819c42f73",
   "recipes": {
     "01_thresholds.sql": "91f46b94fe29306bad532e90479fa14c5c7f0b63c3ec7edef89be7203132b32d",
     "02_portfolios.sql": "f9044bdd7c872ba99d0c4dbe6fbfc4611ea2735a44f87a6d8b99813086e6f7b9"
@@ -180,8 +180,8 @@
   "files": [
     {
       "path": "r1-thresholds.pdf",
-      "bytes": 14156,
-      "sha256": "582eb64608e6f5892a36ae1ebdf3a11e7ef9ef1ac6f7f818ecffb28fbe2dab4b"
+      "bytes": 13342,
+      "sha256": "f9ea2e070108749979977e17c103ae7664a0cb77db68b5523a014da86cfd6e1a"
     },
     {
       "path": "r1-thresholds.png",
@@ -190,8 +190,8 @@
     },
     {
       "path": "r2-portfolios.pdf",
-      "bytes": 18019,
-      "sha256": "23ac17de7a12dc652ff66f2180fcd68ccade78ef0e7d7e1920ade51a57482b36"
+      "bytes": 20047,
+      "sha256": "14728aaff88507cae75e106fbbfad24e703686b821a2bf7f29216532a114907a"
     },
     {
       "path": "r2-portfolios.png",

@@ -9,7 +9,7 @@ data repository holds the same facts in machine-readable form.
 | Item | Value |
 | --- | --- |
 | Data | <https://huggingface.co/datasets/NaiveNeuron/github-stars-in-context>, tag `v1.1.0`, CC BY-NC 4.0 |
-| Code | this repository, tag `v1.1.0`, MIT |
+| Code | this repository, tag `v1.1.1`, MIT |
 | Accounts | 3,671,497 |
 | Repository rows | 53,990,808 (one row per repository per account) |
 | Source database SHA-256 | `6feb097dfbcebbdbde2ba3bab24b65be7565b0eac6735dd28b7b86a1a31743c8` |
@@ -20,19 +20,24 @@ data repository holds the same facts in machine-readable form.
 | Stage | When | Basis for the date |
 | --- | --- | --- |
 | Account discovery | 8–9 December 2025 | Insertion timestamps stored with each account |
-| Repository retrieval | December 2025 to early January 2026 | Latest stored repository creation date (2 January 2026) and the collector author's recollection |
+| Repository retrieval | December 2025 to early January 2026 (estimate) | The collector author's estimate. The latest stored repository creation date is 2 January 2026 |
 | Profile fields | 28 January to 2 February 2026 | Stored update timestamps |
 | External links (not released) | 4–9 March 2026 | Stored parse timestamps |
 
 Per-request times were not stored and run logs were not kept. The repository
-interval is therefore a bound, not a recorded timestamp.
+interval is an estimate. The latest stored repository creation date shows
+that retrieval was still running on 2 January 2026. It does not show when
+retrieval ended.
 
 ## Collector revisions
 
-The collector is in `collector/`, a snapshot of revision `fe2d719`
+The collector in `collector/` is a snapshot of revision `fe2d719`
 (17 May 2026). Collection ran on earlier revisions, which the author later
-refactored. We compared the revisions committed during collection with the
-published one:
+refactored. He reports that he also added columns to the existing database
+by hand at that time. The records that remain do not identify every manual
+change. We compared the revisions committed during collection with the
+published one. The comparison describes source code. It does not show which
+revision or command ran for each account.
 
 | Revision | Date | Finding |
 | --- | --- | --- |
@@ -78,20 +83,24 @@ empty refresh can leave older rows in place.
 - **Parquet release.** `make parquet-check` reproduces 269 saved values from
   the public files
 - **Profile fields.** 1,151,092 accounts have `profile_available = false`.
-  On 10 November 2026 we looked up a seeded random sample of 300 such
-  complete accounts on GitHub by numeric ID: 298 still resolve and 296 have
-  at least one follower. Of 300 accounts with profile fields, 299 resolve.
-  The stored zero follower counts of masked accounts are therefore not real
-  counts. The check is `scripts/check_account_existence.py` and its result is
-  `expected/profile-availability-check.json`. It shows the present state of
-  those accounts, not why each request failed in January 2026
+  The rule masks NULL biographies and profiles with only default values,
+  which can include genuinely empty profiles. On 10 November 2026 we looked
+  up a seeded random sample of 300 such accounts of the complete class on
+  GitHub by numeric ID: 298 resolved and 296 had at least one follower. Of
+  300 accounts with profile fields, 299 resolved. This supports treating the
+  stored zeros as missing. It does not show the values of January 2026 or
+  why they are missing. The check is `scripts/check_account_existence.py` and
+  its result is `expected/profile-availability-check.json`
 
 ## What is not known
 
-- How many accounts were missed. Search cells that still exceeded 1,000
-  results on a single registration day were skipped. According to the
-  collector's author, these concentrate among accounts with one to four
-  followers. No log of skipped cells was kept
+- How many accounts were missed, and how they are distributed over follower
+  counts. Search cells that still exceeded 1,000 results on a single
+  registration day were skipped. A failed search request was treated as an
+  empty cell, and a failure on a later page stopped that cell's pagination.
+  Neither kind of loss was logged. The collector's author recalls that
+  skipped cells were mostly among accounts with one to four followers, which
+  cannot be checked
 - The exact time each account's repositories were fetched
 - Whether an account is a person, a bot or a shared account. The collector
   keeps only `User` results of the search

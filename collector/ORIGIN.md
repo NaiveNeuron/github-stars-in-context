@@ -1,7 +1,7 @@
 # Origin of this directory
 
-This is the collector that produced the source database of GitHub Stars in
-Context, written by Mykhailo Pavlov. It is a snapshot of his repository
+This is a later revision of the collector used to produce the source database
+of GitHub Stars in Context, written by Mykhailo Pavlov. It is a snapshot of his repository
 `git-h-index` at revision `fe2d7196f4fe305a7a42bb871d267a751f5513f8`
 (17 May 2026), published here with his permission under the MIT licence of
 this repository. The Git history and CI configuration are not included.
@@ -20,5 +20,7 @@ Where to look:
 - `data_fetching/users_fetching/fetch_user_profile.py`: profile fields
 - `data_storage/database.py` and `sql/schema.sql`: storage and schema
 
-`README.md` in this directory is the collector's own documentation. Running
+`README.md` in this directory is the collector's own documentation, with
+three edits made for this release: a notice at the top, the token
+instructions and a note on `parse-all`. Running
 it needs GitHub API tokens supplied through `.env`, as described there.

@@ -45,3 +45,23 @@ versions. Compare the row counts, the retrieval classes and the results of
 The `sqlite-check`, `archive-join` and `compare-results` targets of the
 Makefile run the reference implementations on that SQLite file. The public
 Parquet checks do not need them.
+
+## Starting from a new collection
+
+We have not run this path end to end. It is described so that the steps are
+clear.
+
+A new collection observes GitHub at a new time. It will not reproduce the
+released rows or the published counts.
+
+1. In `collector/`, install the collector and set your own GitHub token in
+   `.env`, as its README describes
+2. Run the stages as separate commands: `users`, `repos`,
+   `reset-last-updated`, then `profiles` (with
+   `uv run python -m data_fetching.main <command>`)
+3. Stop the collector. The database is `collector/data/db/github_hindex.db`
+4. Compute the SHA-256 of that file and use it as `SOURCE_SHA` in the
+   commands above, with `SOURCE_DB` set to the file. Do not reuse the
+   checksum of the released source database
+5. Record the collection dates yourself. The manifest holds the
+   classification rules, not the dates of a new collection
